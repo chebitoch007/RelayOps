@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "export": "node scripts/export-project.js",
+    "export:custom": "node scripts/export-project.js --output"
   },
   "dependencies": {
     "framer-motion": "^12.40.0",
