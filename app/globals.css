@@ -54,6 +54,15 @@ h1, h2, h3, h4, h5 {
   transition: opacity 0.3s ease;
 }
 
+/* Hide heavy visual effects on small screens for performance and clarity */
+@media (max-width: 640px) {
+  .cursor-glow,
+  .noise::after,
+  .mesh-bg::before {
+    display: none !important;
+  }
+}
+
 /* Glass card */
 .glass {
   background: var(--bg-glass);

@@ -32,16 +32,16 @@ const floatingCards = [
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center mesh-bg overflow-hidden">
+    <section className="relative min-h-[70vh] md:min-h-screen flex items-center mesh-bg overflow-hidden">
       {/* Grid background */}
       <div className="absolute inset-0 grid-pattern opacity-100" />
 
       {/* Large gradient orbs */}
-      <div className="absolute top-20 left-[-20%] w-[600px] h-[600px] rounded-full"
+      <div className="hidden md:block absolute top-20 left-[-20%] w-[600px] h-[600px] rounded-full"
         style={{ background: "radial-gradient(circle, rgba(0,229,160,0.06) 0%, transparent 70%)" }} />
-      <div className="absolute bottom-0 right-[-10%] w-[500px] h-[500px] rounded-full"
+      <div className="hidden md:block absolute bottom-0 right-[-10%] w-[500px] h-[500px] rounded-full"
         style={{ background: "radial-gradient(circle, rgba(10,132,255,0.07) 0%, transparent 70%)" }} />
-      <div className="absolute top-[40%] left-[30%] w-[400px] h-[400px] rounded-full"
+      <div className="hidden md:block absolute top-[40%] left-[30%] w-[400px] h-[400px] rounded-full"
         style={{ background: "radial-gradient(circle, rgba(123,97,255,0.04) 0%, transparent 70%)" }} />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 pt-28 pb-20 w-full">
