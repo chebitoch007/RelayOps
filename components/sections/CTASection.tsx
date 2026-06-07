@@ -25,7 +25,7 @@ export default function CTASection() {
     try {
       // Replace YOUR_FORM_ID with your Formspree form ID
       // Sign up free at formspree.io → New Form → copy the ID
-      const res = await fetch("https://formspree.io/f/YOUR_FORM_ID", {
+      const res = await fetch("https://formspree.io/f/xdavedqy", {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify(fields),
