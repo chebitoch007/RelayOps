@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { ArrowRight, CheckCircle, Loader } from "lucide-react";
+import { ArrowRight, CheckCircle, Loader2 } from "lucide-react";
 
 type FormState = "idle" | "loading" | "success" | "error";
 
@@ -41,197 +41,190 @@ export default function CTASection() {
   };
 
   return (
-    <section id="contact" className="relative py-28 overflow-hidden noise">
-      {/* Background Ambience Layers */}
+    <section id="contact" className="relative py-32 overflow-hidden">
+      {/* Structural Geometry Overlay */}
       <div className="absolute inset-0 -z-10">
         <div
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(circle at 50% 50%, rgba(0,229,160,0.05) 0%, transparent 65%)",
+              "radial-gradient(ellipse 60% 60% at 50% 50%, rgba(245,166,35,0.02) 0%, transparent 70%)",
           }}
         />
-        <div className="absolute inset-0 opacity-[0.15] grid-pattern" />
+        <div className="absolute inset-0 grid-pattern" />
       </div>
 
       <div className="max-w-6xl mx-auto px-6" ref={ref}>
         <div className="grid lg:grid-cols-2 gap-16 items-start">
 
-          {/* Left Block info structure */}
+          {/* Structural Evaluation Overview */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            style={{ willChange: "transform, opacity" }}
+            transition={{ duration: 0.6 }}
           >
-            <span className="mono text-xs text-[#00E5A0] tracking-widest uppercase">
-              Get Started
+            <span className="mono text-xs text-[#F5A623] uppercase tracking-widest block mb-2">
+              [ PIPELINE AUDITING INTAKE NODE ]
             </span>
-            <h2 className="text-4xl lg:text-5xl font-bold tracking-tight mt-4 mb-6 leading-tight">
-              Let{"'"}s automate your{" "}
-              <span className="gradient-text">biggest bottleneck</span>
+            <h2 className="text-3xl lg:text-5xl font-bold tracking-tight mb-6">
+              Initiate a systemic validation protocol for your{" "}
+              <span className="gradient-text">operational bottlenecks.</span>
             </h2>
-            <p className="text-[#7B8FAB] text-lg font-light leading-relaxed mb-8">
-              Tell us about your business operations and what your workflows manually track right now.
-              We will craft a tailored technical blueprint mapping an exact custom automation solution.
+            <p className="text-[#64748B] text-base font-light leading-relaxed mb-8">
+              Provide an engineering summary of your highest-friction asynchronous dependencies or manually executed routines. Our system analysts will evaluate your data pathing and map out a precise, custom architecture profile—delivered without transaction overhead.
             </p>
 
-            {/* Strategic Workflow Roadmap */}
+            {/* Phased Blueprint Progression */}
             <div className="space-y-4">
               {[
-                { step: "01", text: "Submit your operational bottlenecks via form" },
-                { step: "02", text: "Our engineering studio reviews parameters within 24h" },
-                { step: "03", text: "Secure a strategy mapping slot with senior developers" },
-                { step: "04", text: "We engineer your deployment. You save functional hours weekly." },
+                { phase: "01", title: "Intake Transmission", text: "Submit your operational parameters via the structural diagnostic terminal." },
+                { phase: "02", title: "Algorithmic Analysis", text: "Our senior software developers dissect and profile runtime friction spots within 24 hours." },
+                { phase: "03", title: "Architecture Blueprint", text: "30-minute structured mapping call presenting systemic mitigation loops." },
+                { phase: "04", title: "Integration Buildout", text: "Production-grade codebase generation featuring multi-layered validation layers." },
               ].map((item) => (
-                <div key={item.step} className="flex items-center gap-4 group">
-                  <span
-                    className="mono text-xs w-8 flex-shrink-0 transition-colors duration-300 group-hover:text-[#0A84FF]"
-                    style={{ color: "#00E5A0" }}
-                  >
-                    {item.step}
+                <div key={item.phase} className="flex items-start gap-4">
+                  <span className="mono text-xs font-semibold w-6 mt-0.5 block text-[#F5A623]">
+                    {item.phase}
                   </span>
-                  <span className="text-sm text-[#7B8FAB] group-hover:text-[#EDF2FF] transition-colors duration-300">{item.text}</span>
+                  <div>
+                    <span className="text-sm font-medium text-white block tracking-wide mb-0.5" style={{ fontFamily: "Space Grotesk" }}>
+                      {item.title}
+                    </span>
+                    <span className="text-xs text-[#64748B] leading-relaxed block">{item.text}</span>
+                  </div>
                 </div>
               ))}
             </div>
 
-            {/* Verification anchors */}
-            <div className="flex flex-wrap gap-5 mt-10 pt-10 border-t border-white/5">
-              {["Zero locked contract", "Response window < 24h", "Technical strategy roadmap included"].map((item) => (
-                <div key={item} className="flex items-center gap-2 text-xs text-[#7B8FAB]">
-                  <div className="w-1 h-1 rounded-full bg-[#00E5A0]" />
+            {/* Security Assertions */}
+            <div className="flex flex-wrap gap-5 mt-12 pt-8 border-t border-white/[0.04]">
+              {[
+                "Strict Data Non-Disclosure",
+                "Deterministic Evaluation Models",
+                "Direct Senior Developer Contact",
+              ].map((item) => (
+                <div key={item} className="flex items-center gap-2 text-xs mono text-[#64748B]">
+                  <div className="w-1 h-1 rounded-full bg-[#F5A623]" />
                   {item}
                 </div>
               ))}
             </div>
           </motion.div>
 
-          {/* Right Form container */}
+          {/* Secure Diagnostic Terminal Form */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            style={{ willChange: "transform, opacity" }}
+            transition={{ duration: 0.6, delay: 0.1 }}
           >
             {formState === "success" ? (
-              <div className="glass-accent rounded-2xl p-10 flex flex-col items-center text-center gap-5 optimize-gpu">
-                <div className="w-14 h-14 rounded-full flex items-center justify-center"
-                  style={{ background: "rgba(0,229,160,0.1)" }}>
-                  <CheckCircle size={24} style={{ color: "#00E5A0" }} />
+              <div className="glass rounded-xl border border-[#F5A623]/20 p-12 flex flex-col items-center text-center gap-5">
+                <div className="w-12 h-12 rounded border border-[#F5A623]/20 flex items-center justify-center bg-[#F5A623]/05">
+                  <CheckCircle size={22} className="text-[#F5A623]" />
                 </div>
-                <h3 className="text-xl font-bold" style={{ fontFamily: "Syne" }}>
-                  Parameters Transmitted Successfully
+                <h3 className="text-xl font-bold text-white tracking-wide" style={{ fontFamily: "Space Grotesk" }}>
+                  Telemetry Transmission Success
                 </h3>
-                <p className="text-[#7B8FAB] text-sm leading-relaxed">
-                  Our system has recorded your input. An engineer will deliver a concrete architectural execution plan inside 24 hours.
+                <p className="text-[#64748B] text-sm leading-relaxed max-w-sm">
+                  Your workflow parameters have been ingested into our evaluation queue. A system analyst will initiate feedback pathways within a 24-hour window.
                 </p>
                 <button
                   onClick={() => setFormState("idle")}
-                  className="text-xs text-[#00E5A0] hover:underline mt-2 cursor-pointer"
+                  className="text-xs mono text-[#F5A623] hover:underline mt-2"
                 >
-                  Transmit another submission
+                  // RE-OPEN TERMINAL INTENT
                 </button>
               </div>
             ) : (
               <form
                 onSubmit={handleSubmit}
-                className="glass rounded-2xl p-8 flex flex-col gap-5 optimize-gpu border-white/5 relative z-10"
+                className="glass rounded-xl border border-white/[0.04] p-8 flex flex-col gap-5"
               >
-                <div className="text-sm font-semibold mb-1" style={{ fontFamily: "Syne" }}>
-                  Initiate Strategy Blueprint Request
+                <div className="text-sm font-semibold tracking-wide text-white mb-1" style={{ fontFamily: "Space Grotesk" }}>
+                  Submit Architecture Requirements
                 </div>
 
-                {/* Input components explicitly use 16px text size parameters (`text-base`) to suppress Safari auto-zoom bugs */}
+                {/* Grid Inputs */}
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-xs text-[#7B8FAB]">Your name</label>
+                    <label className="text-xs mono text-[#64748B] uppercase">Origin Name</label>
                     <input
                       type="text"
                       name="name"
                       required
                       value={fields.name}
                       onChange={handleChange}
-                      placeholder="Brian"
-                      className="w-full px-4 py-3 rounded-xl text-base bg-white/[0.03] border border-white/5 text-white placeholder-[#7B8FAB]/30 focus:outline-none focus:border-[#00E5A0]/30 transition-colors"
+                      placeholder="e.g., Alexander"
+                      className="w-full px-4 py-3 rounded text-xs bg-white/[0.01] border border-white/[0.06] text-white placeholder-[#64748B]/40 focus:outline-none focus:border-[#F5A623]/40 transition-colors mono"
                     />
                   </div>
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-xs text-[#7B8FAB]">Work email</label>
+                    <label className="text-xs mono text-[#64748B] uppercase">Transport Email</label>
                     <input
                       type="email"
                       name="email"
                       required
                       value={fields.email}
                       onChange={handleChange}
-                      placeholder="you@company.com"
-                      className="w-full px-4 py-3 rounded-xl text-base bg-white/[0.03] border border-white/5 text-white placeholder-[#7B8FAB]/30 focus:outline-none focus:border-[#00E5A0]/30 transition-colors"
+                      placeholder="alex@enterprise.io"
+                      className="w-full px-4 py-3 rounded text-xs bg-white/[0.01] border border-white/[0.06] text-white placeholder-[#64748B]/40 focus:outline-none focus:border-[#F5A623]/40 transition-colors mono"
                     />
                   </div>
                 </div>
 
+                {/* Company Name */}
                 <div className="flex flex-col gap-1.5">
-                  <label className="text-xs text-[#7B8FAB]">Business / agency name</label>
+                  <label className="text-xs mono text-[#64748B] uppercase">Institutional Entity</label>
                   <input
                     type="text"
                     name="business"
                     value={fields.business}
                     onChange={handleChange}
-                    placeholder="Acme Growth Systems"
-                    className="w-full px-4 py-3 rounded-xl text-base bg-white/[0.03] border border-white/5 text-white placeholder-[#7B8FAB]/30 focus:outline-none focus:border-[#00E5A0]/30 transition-colors"
+                    placeholder="e.g., Nexus Logistics Ltd"
+                    className="w-full px-4 py-3 rounded text-xs bg-white/[0.01] border border-white/[0.06] text-white placeholder-[#64748B]/40 focus:outline-none focus:border-[#F5A623]/40 transition-colors mono"
                   />
                 </div>
 
+                {/* Core Description */}
                 <div className="flex flex-col gap-1.5">
-                  <label className="text-xs text-[#7B8FAB]">
-                    What operations or data pipelines do you track manually?
-                  </label>
+                  <label className="text-xs mono text-[#64748B] uppercase">Bottleneck Vector Diagnosis</label>
                   <textarea
                     name="message"
                     required
                     rows={4}
                     value={fields.message}
                     onChange={handleChange}
-                    placeholder="Describe your current manual steps, lead follow ups, booking handoffs, or custom platform sync errors..."
-                    className="w-full px-4 py-3 rounded-xl text-base bg-white/[0.03] border border-white/5 text-white placeholder-[#7B8FAB]/30 focus:outline-none focus:border-[#00E5A0]/30 transition-colors resize-none"
+                    placeholder="Outline your runtime manual interventions, un-synchronized API states, or distributed routing data errors..."
+                    className="w-full px-4 py-3 rounded text-xs bg-white/[0.01] border border-white/[0.06] text-white placeholder-[#64748B]/40 focus:outline-none focus:border-[#F5A623]/40 transition-colors resize-none mono leading-relaxed"
                   />
                 </div>
 
                 {formState === "error" && (
-                  <p className="text-xs text-red-400">
-                    Transmission fault detected. Contact engineering directly at{" "}
-                    <a href="mailto:hello@relayops.ai" className="underline font-medium">
-                      hello@relayops.ai
-                    </a>
+                  <p className="text-xs text-red-400 mono">
+                    [EXCEPTION ERROR]: Data transmission failure. Route directly to: hello@relayops.ai
                   </p>
                 )}
 
+                {/* Action Frame */}
                 <motion.button
                   type="submit"
                   disabled={formState === "loading"}
                   whileHover={{ scale: formState === "loading" ? 1 : 1.005 }}
                   whileTap={{ scale: formState === "loading" ? 1 : 0.995 }}
-                  className="btn-primary w-full py-4 rounded-xl text-sm flex items-center justify-center gap-2 group mt-1 disabled:opacity-60 cursor-pointer"
+                  className="btn-primary w-full py-4 rounded text-xs tracking-wider font-semibold uppercase flex items-center justify-center gap-2 disabled:opacity-70 mt-2"
                 >
                   {formState === "loading" ? (
                     <>
-                      <Loader size={16} className="animate-spin relative z-10" />
-                      <span className="relative z-10">Transmitting payload...</span>
+                      <Loader2 size={13} className="animate-spin" />
+                      <span>Executing Secure Packet Upload...</span>
                     </>
                   ) : (
                     <>
-                      <span>Generate Strategic Blueprint</span>
-                      <ArrowRight
-                        size={15}
-                        className="group-hover:translate-x-1 transition-transform relative z-10"
-                      />
+                      <span>Submit Pipeline Requirements</span>
+                      <ArrowRight size={13} />
                     </>
                   )}
                 </motion.button>
-
-                <p className="text-xs text-center text-[#7B8FAB]/40 font-light">
-                  Direct encrypted connection. Zero unsolicited communication distributions.
-                </p>
               </form>
             )}
           </motion.div>

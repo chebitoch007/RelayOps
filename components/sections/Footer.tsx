@@ -26,7 +26,7 @@ export default function Footer() {
             <a href="#" className="flex items-center gap-3 mb-4">
               <div
                 className="w-8 h-8 rounded-lg flex items-center justify-center"
-                style={{ background: "linear-gradient(135deg, #00E5A0, #0A84FF)" }}
+                style={{ background: "linear-gradient(135deg, #F5A623, #0EA5E9)" }}
               >
                 <span className="text-sm font-bold text-[#03080F]" style={{ fontFamily: "Syne" }}>
                   R
@@ -48,7 +48,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   title={s.label}
-                  className="w-9 h-9 rounded-lg flex items-center justify-center border border-white/8 text-[#7B8FAB] hover:text-[#00E5A0] hover:border-[#00E5A0]/30 transition-all duration-200"
+                  className="w-9 h-9 rounded-lg flex items-center justify-center border border-white/8 text-[#7B8FAB] hover:text-[#0EA5E9] hover:border-[#0EA5E9]/30 transition-all duration-200"
                 >
                   {s.icon}
                 </a>
@@ -108,8 +108,8 @@ export default function Footer() {
                 GitHub
               </a>
               <div className="flex items-center gap-2 mt-4">
-                <div className="w-1.5 h-1.5 rounded-full bg-[#00E5A0] pulse-glow" />
-                <span className="text-xs text-[#00E5A0]">Available for new projects</span>
+                <div className="w-1.5 h-1.5 rounded-full bg-[#F5A623] pulse-glow" />
+                <span className="text-xs text-[#F5A623]">Available for new projects</span>
               </div>
             </div>
           </div>

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight, Zap, Bot, TrendingUp } from "lucide-react";
 
@@ -8,7 +9,7 @@ const floatingCards = [
     icon: <Bot size={14} />,
     label: "Lead qualified",
     value: "2 seconds",
-    color: "#00E5A0",
+    color: "#F5A623",
     position: "top-[15%] right-[8%]",
     delay: 0,
   },
@@ -16,7 +17,7 @@ const floatingCards = [
     icon: <Zap size={14} />,
     label: "Workflows automated",
     value: "47 this week",
-    color: "#0A84FF",
+    color: "#0EA5E9",
     position: "top-[55%] right-[3%]",
     delay: 0.5,
   },
@@ -24,7 +25,7 @@ const floatingCards = [
     icon: <TrendingUp size={14} />,
     label: "Hours saved",
     value: "12h / week",
-    color: "#7B61FF",
+    color: "#6366F1",
     position: "bottom-[20%] right-[12%]",
     delay: 1,
   },
@@ -38,17 +39,31 @@ export default function Hero() {
 
       {/* Gradient orbs */}
       <div className="absolute top-20 left-[-20%] w-[600px] h-[600px] rounded-full"
-        style={{ background: "radial-gradient(circle, rgba(0,229,160,0.06) 0%, transparent 70%)" }} />
+        style={{ background: "radial-gradient(circle, rgba(245,166,35,0.08) 0%, transparent 70%)" }} />
       <div className="absolute bottom-0 right-[-10%] w-[500px] h-[500px] rounded-full"
-        style={{ background: "radial-gradient(circle, rgba(10,132,255,0.07) 0%, transparent 70%)" }} />
+        style={{ background: "radial-gradient(circle, rgba(14,165,233,0.08) 0%, transparent 70%)" }} />
       <div className="absolute top-[40%] left-[30%] w-[400px] h-[400px] rounded-full"
-        style={{ background: "radial-gradient(circle, rgba(123,97,255,0.04) 0%, transparent 70%)" }} />
+        style={{ background: "radial-gradient(circle, rgba(99,102,241,0.05) 0%, transparent 70%)" }} />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 pt-28 pb-20 w-full">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
 
           {/* Left: Text */}
           <div className="flex flex-col gap-8">
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <Image
+                src="/logo-full.png"
+                alt="RelayOps"
+                width={340}
+                height={120}
+                priority
+                className="mb-2"
+              />
+            </motion.div>
 
             {/* Pill badge */}
             <motion.div
@@ -59,9 +74,9 @@ export default function Hero() {
             >
               <span
                 className="glass-accent px-4 py-1.5 rounded-full text-xs font-medium mono flex items-center gap-2"
-                style={{ color: "#00E5A0" }}
+                style={{ color: "#F5A623" }}
               >
-                <span className="w-1.5 h-1.5 rounded-full bg-[#00E5A0] pulse-glow inline-block" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#F5A623] pulse-glow inline-block" />
                 AI automation for agencies &amp; service businesses
               </span>
             </motion.div>
@@ -156,7 +171,7 @@ export default function Hero() {
                     <div className="w-2.5 h-2.5 rounded-full bg-green-500/70" />
                   </div>
                   <span className="text-xs mono text-[#7B8FAB]">relayops_dashboard.ai</span>
-                  <div className="w-2 h-2 rounded-full bg-[#00E5A0] pulse-glow" />
+                  <div className="w-2 h-2 rounded-full bg-[#0EA5E9] pulse-glow" />
                 </div>
 
                 {/* Stats */}
@@ -174,7 +189,7 @@ export default function Hero() {
                       <div className="text-xl font-bold" style={{ fontFamily: "Syne" }}>
                         {stat.value}
                       </div>
-                      <div className="text-xs mt-1" style={{ color: "#00E5A0" }}>
+                      <div className="text-xs mt-1" style={{ color: "#0EA5E9" }}>
                         {stat.delta}
                       </div>
                     </div>
@@ -185,7 +200,7 @@ export default function Hero() {
                 <div className="mb-5">
                   <div className="text-xs text-[#7B8FAB] mb-3 flex justify-between">
                     <span>Automation Activity</span>
-                    <span className="text-[#00E5A0]">Live</span>
+                    <span className="text-[#0EA5E9]">Live</span>
                   </div>
                   <div className="flex items-end gap-1.5 h-16">
                     {[30, 55, 40, 80, 60, 90, 70, 95, 65, 88, 72, 100, 85, 92].map(
@@ -204,8 +219,8 @@ export default function Hero() {
                             height: `${h}%`,
                             background:
                               i === 13
-                                ? "linear-gradient(180deg, #00E5A0, #0A84FF)"
-                                : `rgba(0,229,160,${0.15 + (i / 14) * 0.25})`,
+                                ? "linear-gradient(180deg, #F5A623, #0EA5E9)"
+                                : `rgba(245,166,35,${0.15 + (i / 14) * 0.25})`,
                           }}
                         />
                       )
@@ -216,9 +231,9 @@ export default function Hero() {
                 {/* Workflows */}
                 <div className="space-y-2">
                   {[
-                    { name: "Lead Qualification Bot", status: "running", color: "#00E5A0" },
-                    { name: "WhatsApp Follow-up", status: "queued", color: "#0A84FF" },
-                    { name: "Email Drip Sequence", status: "running", color: "#00E5A0" },
+                    { name: "Lead Qualification Bot", status: "running", color: "#F5A623" },
+                    { name: "WhatsApp Follow-up", status: "queued", color: "#0EA5E9" },
+                    { name: "Email Drip Sequence", status: "running", color: "#6366F1" },
                   ].map((item) => (
                     <div
                       key={item.name}
@@ -246,7 +261,7 @@ export default function Hero() {
                 className="absolute inset-0 -z-10 blur-3xl"
                 style={{
                   background:
-                    "radial-gradient(ellipse, rgba(0,229,160,0.08) 0%, transparent 70%)",
+                    "radial-gradient(ellipse, rgba(245,166,35,0.08) 0%, transparent 70%)",
                 }}
               />
             </motion.div>
@@ -297,7 +312,7 @@ export default function Hero() {
             <motion.div
               animate={{ y: [0, 6, 0] }}
               transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-              className="w-px h-8 bg-gradient-to-b from-[#00E5A0] to-transparent"
+              className="w-px h-8 bg-gradient-to-b from-[#0EA5E9] to-transparent"
             />
           </div>
         </motion.div>
