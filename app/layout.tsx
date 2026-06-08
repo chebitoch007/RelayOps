@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://relayops.ai"),
+  metadataBase: new URL("https://www.relayops.site"),
 
   title: {
     default: "RelayOps | Systems Engineering & Workflow Automation",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   ],
 
   alternates: {
-    canonical: "https://relayops.ai",
+    canonical: "https://www.relayops.site",
   },
 
   icons: {
@@ -37,13 +37,13 @@ export const metadata: Metadata = {
     title: "RelayOps | Systems Engineering & Workflow Automation",
     description:
       "Production-grade workflow automation, AI orchestration systems, and operational infrastructure engineered for businesses that cannot afford failure.",
-    url: "https://relayops.ai",
+    url: "https://www.relayops.site",
     siteName: "RelayOps",
     type: "website",
     locale: "en_US",
     images: [
       {
-        url: "/logo-full.png",
+        url: "/opengraph-image.png",
         width: 1200,
         height: 630,
         alt: "RelayOps",
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     title: "RelayOps | Systems Engineering & Workflow Automation",
     description:
       "Production-grade workflow automation, AI orchestration systems, and operational infrastructure engineered for businesses that cannot afford failure.",
-    images: ["/logo-full.png"],
+    images: ["/opengraph-image.png"],
   },
 };
 

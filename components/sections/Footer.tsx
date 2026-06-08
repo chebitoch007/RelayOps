@@ -5,42 +5,46 @@ import { ExternalLink, Mail, ArrowUpRight } from "lucide-react";
 const footerLinks = [
   { label: "Services", href: "#services" },
   { label: "Process", href: "#process" },
-  { label: "Work", href: "#work" },
   { label: "About", href: "#about" },
   { label: "Contact", href: "#contact" },
 ];
 
 const socials = [
-  { icon: <Mail size={15} />, href: "mailto:hello@relayops.ai", label: "Email" },
-  { icon: <ExternalLink size={15} />, href: "https://linkedin.com", label: "LinkedIn" },
-  { icon: <ExternalLink size={15} />, href: "https://github.com", label: "GitHub" },
+  { icon: <Mail size={16} />, href: "mailto:brian@relayops.site", label: "Email" },
+  { icon: <ExternalLink size={16} />, href: "https://linkedin.com", label: "LinkedIn" },
+  { icon: <ExternalLink size={16} />, href: "https://github.com", label: "GitHub" },
 ];
 
 export default function Footer() {
   return (
-    <footer className="relative border-t border-white/6" style={{ background: "var(--bg-secondary)" }}>
-      <div className="max-w-7xl mx-auto px-6 py-14">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
-          {/* Brand */}
-          <div className="lg:col-span-2">
-            <a href="#" className="flex items-center gap-3 mb-4">
+    <footer className="relative border-t border-white/[0.06] bg-[#03080F]" style={{ background: "var(--bg-secondary, #03080F)" }}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 lg:py-16">
+        
+        {/* Main Footer Data Grid Structure */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 mb-12">
+          
+          {/* Brand Presentation Identity column */}
+          <div className="sm:col-span-2 lg:col-span-2 flex flex-col items-start">
+            <a href="#" className="flex items-center gap-3 mb-4 group">
               <div
-                className="w-8 h-8 rounded-lg flex items-center justify-center"
+                className="w-8 h-8 rounded-lg flex items-center justify-center transform transition-transform group-hover:scale-105"
                 style={{ background: "linear-gradient(135deg, #F5A623, #0EA5E9)" }}
               >
-                <span className="text-sm font-bold text-[#03080F]" style={{ fontFamily: "Syne" }}>
+                <span className="text-xs font-bold text-[#03080F]" style={{ fontFamily: "Syne" }}>
                   R
                 </span>
               </div>
-              <span className="font-bold" style={{ fontFamily: "Syne" }}>
-                RELAY<span className="gradient-text">OPS</span>
+              <span className="font-bold tracking-tight text-white text-lg" style={{ fontFamily: "Syne" }}>
+                RELAY<span className="gradient-text text-[#F5A623]">OPS</span>
               </span>
             </a>
-            <p className="text-sm text-[#7B8FAB] leading-relaxed max-w-xs font-light">
+            
+            <p className="text-sm text-[#7B8FAB] leading-relaxed max-w-sm font-light mb-6">
               A lean AI automation studio helping businesses save time, generate leads,
               and scale operations using modern AI workflows.
             </p>
-            <div className="flex items-center gap-3 mt-6">
+            
+            <div className="flex items-center gap-3">
               {socials.map((s) => (
                 <a
                   key={s.label}
@@ -48,7 +52,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   title={s.label}
-                  className="w-9 h-9 rounded-lg flex items-center justify-center border border-white/8 text-[#7B8FAB] hover:text-[#0EA5E9] hover:border-[#0EA5E9]/30 transition-all duration-200"
+                  className="w-9 h-9 rounded-lg flex items-center justify-center border border-white/10 text-[#7B8FAB] hover:text-[#0EA5E9] hover:border-[#0EA5E9]/40 bg-white/[0.01] hover:bg-[#0EA5E9]/5 transition-all duration-300"
                 >
                   {s.icon}
                 </a>
@@ -56,22 +60,22 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Navigation */}
-          <div>
-            <div className="text-xs mono text-[#7B8FAB] uppercase tracking-widest mb-4">
+          {/* Functional Navigation Directory Column */}
+          <div className="flex flex-col">
+            <div className="text-xs font-mono text-[#7B8FAB] uppercase tracking-widest mb-4 border-l-2 border-[#0EA5E9] pl-2">
               Navigation
             </div>
-            <ul className="space-y-2.5">
+            <ul className="space-y-3">
               {footerLinks.map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="text-sm text-[#7B8FAB] hover:text-white transition-colors flex items-center gap-1 group"
+                    className="text-sm text-[#7B8FAB] hover:text-white transition-colors duration-200 flex items-center gap-1 group w-max"
                   >
                     {link.label}
                     <ArrowUpRight
-                      size={11}
-                      className="opacity-0 group-hover:opacity-100 transition-opacity -translate-y-0.5"
+                      size={12}
+                      className="text-[#7B8FAB]/40 group-hover:text-[#0EA5E9] transform opacity-0 group-hover:opacity-100 -translate-y-0.5 translate-x-[-4px] group-hover:translate-x-0 transition-all duration-200"
                     />
                   </a>
                 </li>
@@ -79,23 +83,23 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact */}
-          <div>
-            <div className="text-xs mono text-[#7B8FAB] uppercase tracking-widest mb-4">
+          {/* Quick Contact & Availability Metric Column */}
+          <div className="flex flex-col">
+            <div className="text-xs font-mono text-[#7B8FAB] uppercase tracking-widest mb-4 border-l-2 border-[#F5A623] pl-2">
               Contact
             </div>
             <div className="space-y-3">
               <a
-                href="mailto:hello@relayops.ai"
-                className="text-sm text-[#7B8FAB] hover:text-white transition-colors block"
+                href="mailto:brian@relayops.site"
+                className="text-sm text-[#7B8FAB] hover:text-white transition-colors duration-200 block break-all"
               >
-                hello@relayops.ai
+                brian@relayops.site
               </a>
               <a
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm text-[#7B8FAB] hover:text-white transition-colors block"
+                className="text-sm text-[#7B8FAB] hover:text-white transition-colors duration-200 block"
               >
                 LinkedIn
               </a>
@@ -103,24 +107,25 @@ export default function Footer() {
                 href="https://github.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm text-[#7B8FAB] hover:text-white transition-colors block"
+                className="text-sm text-[#7B8FAB] hover:text-white transition-colors duration-200 block"
               >
                 GitHub
               </a>
-              <div className="flex items-center gap-2 mt-4">
-                <div className="w-1.5 h-1.5 rounded-full bg-[#F5A623] pulse-glow" />
-                <span className="text-xs text-[#F5A623]">Available for new projects</span>
+              
+              <div className="inline-flex items-center gap-2 mt-4 bg-white/[0.02] border border-white/[0.04] px-3 py-1.5 rounded-full w-max">
+                <div className="w-2 h-2 rounded-full bg-[#F5A623] animate-pulse shadow-sm shadow-[#F5A623]" />
+                <span className="text-xs text-[#F5A623] font-medium tracking-wide">Available for projects</span>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Bottom bar */}
-        <div className="border-t border-white/6 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <span className="text-xs text-[#7B8FAB] font-light">
+        {/* Closing Platform Legalities Layout Segment */}
+        <div className="border-t border-white/[0.06] pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <span className="text-xs text-[#7B8FAB]/70 font-light text-center sm:text-left order-2 sm:order-1">
             © {new Date().getFullYear()} RelayOps. All rights reserved.
           </span>
-          <span className="text-xs mono text-[#7B8FAB]/50">
+          <span className="text-xs font-mono text-[#7B8FAB]/40 text-center sm:text-right order-1 sm:order-2">
             Built with Next.js · Deployed on Vercel
           </span>
         </div>
