@@ -2,15 +2,6 @@
 
 import { useEffect, useRef } from "react";
 
-interface Particle {
-  x: number;
-  y: number;
-  vx: number;
-  vy: number;
-  alpha: number;
-  radius: number;
-}
-
 export default function ParticleBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -21,78 +12,163 @@ export default function ParticleBackground() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    let animId: number;
-    const particles: Particle[] = [];
-    const count = 60;
+    let animationFrameId: number;
+    let particles: Particle[] = [];
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+    
+    // Track mouse vector for fluid interaction
+    const mouse = { x: -1000, y: -1000, targetX: -1000, targetY: -1000, radius: 180 };
 
-    const resize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
+    class Particle {
+      x: number;
+      y: number;
+      baseX: number;
+      baseY: number;
+      size: number;
+      speedX: number;
+      speedY: number;
+      angle: number;
+      spin: number;
+      hue: number;
+      alpha: number;
+      targetAlpha: number;
 
-    const spawn = (): Particle => ({
-      x: Math.random() * window.innerWidth,
-      y: Math.random() * window.innerHeight,
-      vx: (Math.random() - 0.5) * 0.3,
-      vy: (Math.random() - 0.5) * 0.3,
-      alpha: Math.random() * 0.4 + 0.05,
-      radius: Math.random() * 1.5 + 0.5,
-    });
+      constructor() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.baseX = this.x;
+        this.baseY = this.y;
+        this.size = Math.random() * 1.5 + 0.5;
+        this.speedX = (Math.random() - 0.5) * 0.3;
+        this.speedY = (Math.random() - 0.5) * 0.3;
+        this.angle = Math.random() * Math.PI * 2;
+        this.spin = (Math.random() - 0.5) * 0.01;
+        // Subtle spectrum transition between theme primary colors
+        this.hue = Math.random() > 0.5 ? 160 : 210; // Teal vs Blue tint
+        this.alpha = 0;
+        this.targetAlpha = Math.random() * 0.4 + 0.1;
+      }
 
-    resize();
-    window.addEventListener("resize", resize);
+      update() {
+        // Slow organic drift loop using trigonometric vector field simulation
+        this.angle += this.spin;
+        this.x += this.speedX + Math.cos(this.angle) * 0.15;
+        this.y += this.speedY + Math.sin(this.angle) * 0.15;
 
-    for (let i = 0; i < count; i++) particles.push(spawn());
+        // Smooth opacity reveal on load
+        if (this.alpha < this.targetAlpha) {
+          this.alpha += 0.005;
+        }
 
-    const draw = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+        // Screen boundary wraparound logic
+        if (this.x < 0) this.x = width;
+        if (this.x > width) this.x = 0;
+        if (this.y < 0) this.y = height;
+        if (this.y > height) this.y = 0;
 
-      for (let i = 0; i < particles.length; i++) {
-        const p = particles[i];
-        p.x += p.vx;
-        p.y += p.vy;
+        // Interactive push mechanics relative to user viewport positions
+        const dx = mouse.x - this.x;
+        const dy = mouse.y - this.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
 
-        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(0, 229, 160, ${p.alpha})`;
-        ctx.fill();
-
-        // Draw connections
-        for (let j = i + 1; j < particles.length; j++) {
-          const q = particles[j];
-          const dx = p.x - q.x;
-          const dy = p.y - q.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-
-          if (dist < 120) {
-            ctx.beginPath();
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(q.x, q.y);
-            ctx.strokeStyle = `rgba(0, 229, 160, ${0.04 * (1 - dist / 120)})`;
-            ctx.lineWidth = 0.5;
-            ctx.stroke();
-          }
+        if (distance < mouse.radius) {
+          const force = (mouse.radius - distance) / mouse.radius;
+          const directionX = (dx / distance) * force * 0.8;
+          const directionY = (dy / distance) * force * 0.8;
+          this.x -= directionX;
+          this.y -= directionY;
         }
       }
 
-      animId = requestAnimationFrame(draw);
+      draw(context: CanvasRenderingContext2D) {
+        context.beginPath();
+        context.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        context.fillStyle = `hsla(${this.hue}, 85%, 65%, ${this.alpha})`;
+        context.fill();
+      }
+    }
+
+    const init = () => {
+      particles = [];
+      // Adjust system volume depending on device capacity to maintain fluid frame pacing
+      const particleCount = Math.min(Math.floor((width * height) / 9000), window.innerWidth < 768 ? 40 : 120);
+      for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
+      }
     };
 
-    draw();
+    const resize = () => {
+      if (!canvas) return;
+      width = window.innerWidth;
+      height = window.innerHeight;
+
+      // Force proper Device Pixel Ratio mapping for visual crispness on modern displays
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${height}px`;
+
+      if (ctx) {
+        ctx.scale(dpr, dpr);
+      }
+      init();
+    };
+
+    const render = () => {
+      // Linear mouse dampening path calculations
+      mouse.x += (mouse.targetX - mouse.x) * 0.08;
+      mouse.y += (mouse.targetY - mouse.y) * 0.08;
+
+      ctx.clearRect(0, 0, width, height);
+      
+      for (let i = 0; i < particles.length; i++) {
+        particles[i].update();
+        particles[i].draw(ctx);
+      }
+      
+      animationFrameId = requestAnimationFrame(render);
+    };
+
+    const handleMouseMove = (e: MouseEvent) => {
+      mouse.targetX = e.clientX;
+      mouse.targetY = e.clientY;
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      if (e.touches.length > 0) {
+        mouse.targetX = e.touches[0].clientX;
+        mouse.targetY = e.touches[0].clientY;
+      }
+    };
+
+    const handleMouseLeave = () => {
+      mouse.targetX = -1000;
+      mouse.targetY = -1000;
+    };
+
+    window.addEventListener("resize", resize);
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("touchmove", handleTouchMove, { passive: true });
+    document.addEventListener("mouseleave", handleMouseLeave);
+
+    resize();
+    render();
 
     return () => {
+      cancelAnimationFrame(animationFrameId);
       window.removeEventListener("resize", resize);
-      cancelAnimationFrame(animId);
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("touchmove", handleTouchMove);
+      document.removeEventListener("mouseleave", handleMouseLeave);
     };
   }, []);
 
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-0 opacity-60"
+      className="fixed inset-0 pointer-events-none z-[1] opacity-60 mix-blend-screen"
     />
   );
 }

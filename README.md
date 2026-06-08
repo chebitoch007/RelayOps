@@ -1,113 +1,135 @@
-# Axon AI — AI Automation Agency Website
+# RelayOps — AI Automation Agency Website
 
-A premium, modern AI automation agency landing page built with Next.js 15, Tailwind CSS, and Framer Motion.
+RelayOps is a polished landing page for an AI automation agency. It is designed to present a service-driven brand with modern visuals, custom motion, and responsive layouts for showcasing services, trust signals, process steps, and interactive demos.
+
+## What RelayOps Does
+
+- Presents RelayOps as a strategic AI automation partner
+- Highlights services, benefits, and growth-focused process steps
+- Includes demo-style content to show automated workflows and product value
+- Uses motion, glassmorphism, and particle effects to create a premium digital agency experience
+- Works as a ready-to-use marketing site for AI / automation consultancies
 
 ## Features
 
-- Dark theme with custom CSS design system
-- Framer Motion scroll-triggered animations throughout
-- Particle background with canvas rendering
-- Animated cursor glow (desktop)
-- Loading screen with brand animation
-- Sticky navbar with mobile hamburger
-- Glassmorphism UI elements
-- Custom typography (Syne + Outfit + JetBrains Mono)
-- Interactive demo tabs with mock chat UIs
-- Fully responsive mobile-first
-
-## Sections
-
-| Section | Description |
-|---|---|
-| Hero | Animated headline, CTA, floating metric cards, dashboard visual |
-| Trust | 4 benefit cards |
-| Services | 6 service cards with hover effects |
-| Process | 3-step Audit → Automate → Scale timeline |
-| Demo | Tabbed interactive demos |
-| About | Founder section + tech stack |
-| CTA | Conversion section |
-| Footer | Links, social, copyright |
+- Dark theme with a custom CSS design system
+- Framer Motion scroll-triggered animations
+- Canvas particle background and animated cursor
+- Branded loading screen experience
+- Responsive mobile-first design
+- Sticky navbar with mobile hamburger menu
+- Section-driven layout: Hero, Trust, Services, Process, Demo, About, CTA, Footer
 
 ## Tech Stack
 
-- Next.js 15 App Router + TypeScript
+- Next.js 16 App Router + TypeScript
 - Tailwind CSS v4
 - Framer Motion
 - Lucide React icons
 
-## Getting Started
+## Install Dependencies
+
+From the project root:
 
 ```bash
 npm install
+```
+
+## Run Locally
+
+Start the development server:
+
+```bash
 npm run dev
 ```
 
-Open http://localhost:3000
+Then open:
 
-## Deploy to Vercel
+```text
+http://localhost:3000
+```
+
+## Build for Production
+
+```bash
+npm run build
+```
+
+If you want to preview the production build locally:
+
+```bash
+npm run start
+```
+
+## Deployment Instructions
+
+### Deploy to Vercel
 
 **Option 1: Vercel CLI**
+
 ```bash
 npm i -g vercel
 vercel
 ```
 
 **Option 2: GitHub + Vercel Dashboard**
-1. Push to GitHub
-2. Import at vercel.com/new
-3. Click Deploy (auto-detects Next.js)
 
-No environment variables required for the base site.
+1. Push the repository to GitHub
+2. Go to https://vercel.com/new
+3. Select the GitHub repository
+4. Confirm the deployment settings
+5. Deploy the app
+
+Vercel automatically detects Next.js projects.
+
+### Manual Deployment
+
+The site can also be hosted on any platform that supports Next.js production builds. Ensure you:
+
+1. Install dependencies: `npm install`
+2. Build the app: `npm run build`
+3. Start the server: `npm run start`
+
+No environment variables are required for the default static landing page.
 
 ## Project Structure
 
-```
+```text
 ai-agency/
 ├── app/
-│   ├── globals.css          # Design system, CSS variables
-│   ├── layout.tsx
-│   └── page.tsx
+│   ├── globals.css          # global styles and design tokens
+│   ├── layout.tsx           # application layout and metadata
+│   └── page.tsx             # homepage content
 ├── components/
-│   ├── sections/
-│   │   ├── Navbar.tsx
-│   │   ├── Hero.tsx
-│   │   ├── TrustSection.tsx
-│   │   ├── ServicesSection.tsx
-│   │   ├── ProcessSection.tsx
-│   │   ├── DemoSection.tsx
+│   ├── sections/            # page section components
 │   │   ├── AboutSection.tsx
 │   │   ├── CTASection.tsx
-│   │   └── Footer.tsx
-│   └── ui/
+│   │   ├── DemoSection.tsx
+│   │   ├── Footer.tsx
+│   │   ├── Hero.tsx
+│   │   ├── Navbar.tsx
+│   │   ├── ProcessSection.tsx
+│   │   ├── ServicesSection.tsx
+│   │   └── TrustSection.tsx
+│   └── ui/                  # reusable UI and animation components
 │       ├── AnimatedCursor.tsx
-│       ├── ParticleBackground.tsx
-│       └── LoadingScreen.tsx
+│       ├── LoadingScreen.tsx
+│       └── ParticleBackground.tsx
+├── public/                  # static assets
+├── scripts/                 # utility scripts
+├── package.json             # dependencies and scripts
+├── tailwind.config.ts       # Tailwind configuration
+├── next.config.ts           # Next.js configuration
+└── tsconfig.json            # TypeScript configuration
 ```
-
-## Design System
-
-### Colors
-```
---bg-primary: #03080F
---bg-secondary: #071020
---accent-teal: #00E5A0
---accent-blue: #0A84FF
---accent-purple: #7B61FF
---text-primary: #EDF2FF
---text-muted: #7B8FAB
-```
-
-### Fonts
-- Syne (headings)
-- Outfit (body)
-- JetBrains Mono (code)
 
 ## Customization
 
-- Brand name: replace "AXON AI" across component files
-- Contact: update mailto links in CTASection.tsx and Footer.tsx
-- Services: edit ServicesSection.tsx
-- Tech stack list: edit AboutSection.tsx
+- Change brand text and company name in section files
+- Update contact links in `components/sections/CTASection.tsx` and `components/sections/Footer.tsx`
+- Edit services content in `components/sections/ServicesSection.tsx`
+- Update the tech stack or team info in `components/sections/AboutSection.tsx`
 
 ## License
+
 MIT
