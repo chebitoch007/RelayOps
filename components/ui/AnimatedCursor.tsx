@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
 export default function AnimatedCursor() {
@@ -16,7 +16,6 @@ export default function AnimatedCursor() {
   const cursorYSpring = useSpring(cursorY, springConfig);
 
   useEffect(() => {
-    // Detect mobile/touchscreen capability to prevent rendering glitches on coarse pointers
     const checkDeviceCapability = () => {
       const hasTouch = window.matchMedia("(pointer: coarse)").matches;
       setIsMobile(hasTouch);
@@ -31,36 +30,32 @@ export default function AnimatedCursor() {
       if (!isVisible) setIsVisible(true);
     };
 
-    const handleMouseLeave = () => setIsVisible(false);
-    const handleMouseEnter = () => setIsVisible(true);
-
-    const addHoverListeners = () => {
-      const interactiveElements = document.querySelectorAll(
-        'a, button, input, textarea, [role="button"], .interactive-target'
-      );
-      
-      interactiveElements.forEach((el) => {
-        el.addEventListener("mouseenter", () => setIsHovered(true));
-        el.addEventListener("mouseleave", () => setIsHovered(false));
-      });
+    const handleMouseOver = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (target.closest('a, button, input, textarea, [role="button"], .interactive-target')) {
+        setIsHovered(true);
+      } else {
+        setIsHovered(false);
+      }
     };
 
-    window.addEventListener("mousemove", moveCursor);
-    document.addEventListener("mouseleave", handleMouseLeave);
-    document.addEventListener("mouseenter", handleMouseEnter);
-    
-    // Initialize interaction elements check
-    addHoverListeners();
+    const handleMouseLeaveWindow = () => setIsVisible(false);
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Tab") {
+        setIsVisible(false);
+      }
+    };
 
-    // Re-bind listeners on mutations (helpful for dynamic routes/content changes)
-    const observer = new MutationObserver(addHoverListeners);
-    observer.observe(document.body, { childList: true, subtree: true });
+    window.addEventListener("mousemove", moveCursor, { passive: true });
+    document.addEventListener("mouseover", handleMouseOver, { passive: true });
+    document.addEventListener("mouseleave", handleMouseLeaveWindow);
+    window.addEventListener("keydown", handleKeyDown);
 
     return () => {
       window.removeEventListener("mousemove", moveCursor);
-      document.removeEventListener("mouseleave", handleMouseLeave);
-      document.removeEventListener("mouseenter", handleMouseEnter);
-      observer.disconnect();
+      document.removeEventListener("mouseover", handleMouseOver);
+      document.removeEventListener("mouseleave", handleMouseLeaveWindow);
+      window.removeEventListener("keydown", handleKeyDown);
     };
   }, [cursorX, cursorY, isVisible]);
 
@@ -68,28 +63,15 @@ export default function AnimatedCursor() {
 
   return (
     <>
-      {/* Precision Core Dot */}
       <motion.div
         className="fixed top-0 left-0 w-2 h-2 bg-[#00E5A0] rounded-full pointer-events-none z-[9999] mix-blend-difference"
-        style={{
-          x: cursorX,
-          y: cursorY,
-          transform: "translate(-50%, -50%)",
-        }}
-        animate={{
-          scale: isHovered ? 2.5 : 1,
-        }}
+        style={{ x: cursorX, y: cursorY, transform: "translate(-50%, -50%)" }}
+        animate={{ scale: isHovered ? 2.5 : 1, opacity: isVisible ? 1 : 0 }}
         transition={{ type: "spring", stiffness: 500, damping: 28 }}
       />
-      
-      {/* Delayed Outer Flow Ring */}
       <motion.div
         className="fixed top-0 left-0 w-7 h-7 border border-[#00E5A0]/50 rounded-full pointer-events-none z-[9998]"
-        style={{
-          x: cursorXSpring,
-          y: cursorYSpring,
-          transform: "translate(-50%, -50%)",
-        }}
+        style={{ x: cursorXSpring, y: cursorYSpring, transform: "translate(-50%, -50%)" }}
         animate={{
           scale: isHovered ? 1.8 : 1,
           backgroundColor: isHovered ? "rgba(0, 229, 160, 0.05)" : "rgba(0, 229, 160, 0)",

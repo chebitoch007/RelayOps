@@ -1,73 +1,51 @@
-import type { Metadata } from "next";
+import { Space_Grotesk, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import WebVitals from "@/components/WebVitals";
 
-export const metadata: Metadata = {
-  metadataBase: new URL("https://www.relayops.site"),
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-jakarta",
+  preload: true,
+});
 
-  title: {
-    default: "RelayOps | Systems Engineering & Workflow Automation",
-    template: "%s | RelayOps",
-  },
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-space",
+  preload: true,
+});
 
-  description:
-    "Production-grade workflow automation, AI orchestration systems, and operational infrastructure engineered for businesses that cannot afford failure.",
+const jetbrains = JetBrains_Mono({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-mono",
+  preload: true,
+});
 
-  keywords: [
-    "workflow automation",
-    "AI systems",
-    "business automation",
-    "operations engineering",
-    "n8n automation",
-    "AI agents",
-    "workflow orchestration",
-    "RelayOps",
-  ],
-
-  alternates: {
-    canonical: "https://www.relayops.site",
-  },
-
-  icons: {
-    icon: "/favicon.png",
-    shortcut: "/favicon.png",
-    apple: "/apple-touch-icon.png",
-  },
-
-  openGraph: {
-    title: "RelayOps | Systems Engineering & Workflow Automation",
-    description:
-      "Production-grade workflow automation, AI orchestration systems, and operational infrastructure engineered for businesses that cannot afford failure.",
-    url: "https://www.relayops.site",
-    siteName: "RelayOps",
-    type: "website",
-    locale: "en_US",
-    images: [
-      {
-        url: "/opengraph-image.png",
-        width: 1200,
-        height: 630,
-        alt: "RelayOps",
-      },
-    ],
-  },
-
-  twitter: {
-    card: "summary_large_image",
-    title: "RelayOps | Systems Engineering & Workflow Automation",
-    description:
-      "Production-grade workflow automation, AI orchestration systems, and operational infrastructure engineered for businesses that cannot afford failure.",
-    images: ["/opengraph-image.png"],
-  },
+export const metadata = {
+  title: "RelayOps | Systemic Validation Protocols",
+  description: "Pipeline Auditing and Operational Architecture Buildouts.",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className="antialiased">{children}</body>
+    <html
+      lang="en"
+      className={`scroll-smooth ${jakarta.variable} ${spaceGrotesk.variable} ${jetbrains.variable}`}
+    >
+      <body className="bg-[#04060A] text-[#F8FAFC] antialiased overflow-x-hidden selection:bg-[#F5A623]/30 selection:text-white">
+        {/* Skip-to-content link — hidden until focused, required for WCAG 2.1 Level A */}
+        
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[99999] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-[#F5A623] focus:text-[#04060A] focus:font-semibold focus:text-sm focus:outline-none focus:ring-2 focus:ring-white"
+          >
+          Skip to main content
+        </a>
+        <WebVitals />
+        {children}
+      </body>
     </html>
   );
 }

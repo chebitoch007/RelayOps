@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { Bot, Mail, MessageSquare, Calendar, Workflow, Target } from "lucide-react";
+import SkeletonCard from "@/components/SkeletonCard";
 
 const services = [
   {
@@ -61,17 +62,24 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
 
+  if (!inView) {
+    return (
+      <div ref={ref}>
+        <SkeletonCard hasIcon hasTags lines={3} />
+      </div>
+    );
+  }
+
   return (
     <motion.div
       ref={ref}
       initial={{ opacity: 0, y: 40 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="service-card rounded-2xl p-6 cursor-default"
+      className="service-card rounded-2xl p-6 cursor-default relative overflow-hidden border border-white/[0.04] bg-white/[0.02] hover:bg-white/[0.04] hover:border-white/[0.08] transition-all duration-300"
     >
-      {/* Top: Icon + title */}
       <div className="flex items-start gap-4 mb-4">
         <motion.div
           animate={{ scale: hovered ? 1.1 : 1 }}
@@ -81,16 +89,11 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
         >
           {service.icon}
         </motion.div>
-        <h3 className="text-base font-bold mt-1" style={{ fontFamily: "Syne" }}>
-          {service.title}
-        </h3>
+        <h3 className="text-base font-bold mt-1 font-space">{service.title}</h3>
       </div>
 
-      <p className="text-sm text-[#7B8FAB] leading-relaxed mb-5 font-light">
-        {service.desc}
-      </p>
+      <p className="text-sm text-[#7B8FAB] leading-relaxed mb-5 font-light">{service.desc}</p>
 
-      {/* Tags */}
       <div className="flex flex-wrap gap-2">
         {service.tags.map((tag) => (
           <span
@@ -107,7 +110,6 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
         ))}
       </div>
 
-      {/* Hover gradient */}
       <motion.div
         className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${service.gradient} pointer-events-none`}
         animate={{ opacity: hovered ? 1 : 0 }}
@@ -123,9 +125,12 @@ export default function ServicesSection() {
 
   return (
     <section id="services" className="relative py-28">
-      {/* BG glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full -z-10"
-        style={{ background: "radial-gradient(ellipse, rgba(10,132,255,0.04) 0%, transparent 70%)" }} />
+      <div
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full -z-10"
+        style={{
+          background: "radial-gradient(ellipse, rgba(10,132,255,0.04) 0%, transparent 70%)",
+        }}
+      />
 
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16" ref={ref}>
@@ -142,8 +147,7 @@ export default function ServicesSection() {
             transition={{ delay: 0.1, duration: 0.6 }}
             className="text-4xl lg:text-5xl font-bold tracking-tight mt-4"
           >
-            Six systems that{" "}
-            <span className="gradient-text">move the needle</span>
+            Six systems that <span className="gradient-text">move the needle</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -151,7 +155,8 @@ export default function ServicesSection() {
             transition={{ delay: 0.2, duration: 0.6 }}
             className="text-[#7B8FAB] mt-4 max-w-lg mx-auto font-light"
           >
-            Practical, deployed AI — not prototypes. Every service is scoped, built, and handed off ready to run.
+            Practical, deployed AI — not prototypes. Every service is scoped, built, and handed off
+            ready to run.
           </motion.p>
         </div>
 
