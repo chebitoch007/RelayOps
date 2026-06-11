@@ -1,51 +1,74 @@
-import { Space_Grotesk, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
+import type { Metadata } from "next";
 import "./globals.css";
-import WebVitals from "@/components/WebVitals";
 
-const jakarta = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-jakarta",
-  preload: true,
-});
-
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-space",
-  preload: true,
-});
-
-const jetbrains = JetBrains_Mono({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-mono",
-  preload: true,
-});
-
-export const metadata = {
-  title: "RelayOps | Systemic Validation Protocols",
-  description: "Pipeline Auditing and Operational Architecture Buildouts.",
+export const metadata: Metadata = {
+  metadataBase: new URL("https://www.relayops.site"),
+  title: {
+    default: "RelayOps — AI Automation for Agencies & Service Businesses",
+    template: "%s | RelayOps",
+  },
+  description:
+    "RelayOps builds AI systems that respond to leads in seconds, automate appointment booking, and eliminate manual follow-up. Built for agencies and service businesses.",
+  keywords: [
+    "AI automation agency",
+    "lead follow-up automation",
+    "AI chatbot",
+    "WhatsApp automation",
+    "appointment booking AI",
+    "marketing agency automation",
+    "workflow automation",
+  ],
+  authors: [{ name: "RelayOps", url: "https://www.relayops.site" }],
+  creator: "RelayOps",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://www.relayops.site",
+    siteName: "RelayOps",
+    title: "RelayOps — AI Automation for Agencies & Service Businesses",
+    description:
+      "Stop following up leads manually. We build AI systems that respond in seconds, qualify leads, and book calls — without your team touching it.",
+    images: [
+      {
+        url: "/icon.png",
+        width: 1200,
+        height: 630,
+        alt: "RelayOps — AI Automation Systems",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "RelayOps — AI Automation for Agencies",
+    description:
+      "Stop following up leads manually. AI responds in 2 seconds, qualifies, and books calls automatically.",
+    images: ["/og-image.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html
-      lang="en"
-      className={`scroll-smooth ${jakarta.variable} ${spaceGrotesk.variable} ${jetbrains.variable}`}
-    >
-      <body className="bg-[#04060A] text-[#F8FAFC] antialiased overflow-x-hidden selection:bg-[#F5A623]/30 selection:text-white">
-        {/* Skip-to-content link — hidden until focused, required for WCAG 2.1 Level A */}
-        
-          <a
-            href="#main-content"
-            className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[99999] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-[#F5A623] focus:text-[#04060A] focus:font-semibold focus:text-sm focus:outline-none focus:ring-2 focus:ring-white"
-          >
-          Skip to main content
-        </a>
-        <WebVitals />
-        {children}
-      </body>
+    <html lang="en" className="scroll-smooth">
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+      </head>
+      <body className="antialiased">{children}</body>
     </html>
   );
 }
