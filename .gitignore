@@ -40,3 +40,9 @@ Thumbs.db
 # Project exports (generated files, not source)
 project-export.md
 test-export.md
+
+# Internal/working files - not for public repo
+CLAUDE.md
+AGENTS.md
+OUTREACH.md
+ai-agency.zip
