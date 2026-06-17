@@ -6,34 +6,34 @@ import { Terminal, ShieldCheck, Cpu } from "lucide-react";
 import SkeletonCard from "@/components/SkeletonCard";
 
 const stack = [
-  "Distributed Orchestration Engine",
-  "Deterministic GPT-4 Validation",
-  "High-Throughput n8n Matrices",
-  "Asynchronous Event Brokers",
-  "Supabase Relational Layers",
-  "Secure WhatsApp Transport Layers",
-  "Twilio Core SIP Infrastructure",
-  "Isolated Call Telemetry Profiles",
-  "ClickHouse Analytical Logging",
+  "n8n & Make.com",
+  "OpenAI GPT-4 & Claude",
+  "Supabase",
+  "WhatsApp Business API",
+  "Twilio",
+  "Zapier",
+  "Next.js & TypeScript",
+  "PostgreSQL",
+  "REST APIs & Webhooks",
 ];
 
 const designPrinciples = [
   {
     icon: <Terminal size={15} />,
-    title: "Deterministic State Machine Topologies",
-    desc: "We do not deploy black-box chatbots or volatile prompt chains. Every workflow behaves as an immutable state machine with deterministic handling loops.",
+    title: "No black-box AI guesswork",
+    desc: "Every automation follows clear, predictable logic. You'll always know exactly what it does and why — no mystery prompts, no surprises.",
     color: "#F5A623",
   },
   {
     icon: <ShieldCheck size={15} />,
-    title: "Idempotent Data Transmutation Layers",
-    desc: "Built to run natively across multi-region infrastructure. System failure loops automatically fall back on secure checkpoints to eliminate transactional mutation vectors.",
+    title: "Built to handle errors gracefully",
+    desc: "If something goes wrong — an API hiccup, a duplicate form submission — the system recovers safely instead of breaking or duplicating your data.",
     color: "#0EA5E9",
   },
   {
     icon: <Cpu size={15} />,
-    title: "Rigorous 5-Layer Validator System",
-    desc: "All ingested payloads flow through a validation grid consisting of structural checks, data integrity bounds, and runtime threat isolation rules before state progression.",
+    title: "Tested before it touches your business",
+    desc: "Every workflow is checked against real-world edge cases and failure points before it goes live, so it works reliably from day one.",
     color: "#6366F1",
   },
 ];
@@ -63,14 +63,14 @@ export default function AboutSection() {
           </div>
         ) : (
           <div className="grid lg:grid-cols-2 gap-20 items-center">
-            {/* System Mechanics Info */}
+            {/* About / How we work */}
             <div>
               <motion.span
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 className="mono text-xs text-[#F5A623] uppercase tracking-widest block mb-3"
               >
-                [ SYSTEM METRICS & DESIGN SPECIFICATIONS ]
+                [ HOW WE WORK ]
               </motion.span>
               <motion.h2
                 initial={{ opacity: 0, y: 15 }}
@@ -78,8 +78,8 @@ export default function AboutSection() {
                 transition={{ delay: 0.1, duration: 0.5 }}
                 className="text-3xl lg:text-5xl font-bold tracking-tight mb-6"
               >
-                Production-grade systems engineering for{" "}
-                <span className="gradient-text">mission-critical workflows.</span>
+                Built to be reliable,{" "}
+                <span className="gradient-text">not just clever.</span>
               </motion.h2>
               <motion.p
                 initial={{ opacity: 0, y: 15 }}
@@ -87,9 +87,10 @@ export default function AboutSection() {
                 transition={{ delay: 0.15, duration: 0.5 }}
                 className="text-[#64748B] leading-relaxed mb-8 font-normal text-base"
               >
-                RelayOps functions strictly as an architectural consulting engineering studio. We
-                identify manual operational bottlenecks, map them into discrete mathematical
-                workflows, and replace them with fault-tolerant systems.
+                RelayOps is a small, hands-on automation studio. We look at the manual,
+                repetitive parts of your business — replying to leads, booking calls,
+                chasing follow-ups — and turn them into systems that just work quietly
+                in the background, every day.
               </motion.p>
 
               <div className="space-y-4">
@@ -125,7 +126,7 @@ export default function AboutSection() {
               </div>
             </div>
 
-            {/* Infrastructure Matrix */}
+            {/* Tools + availability */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -133,7 +134,7 @@ export default function AboutSection() {
             >
               <div className="glass rounded-xl border border-white/[0.05] p-8">
                 <div className="text-xs mono text-[#64748B] uppercase tracking-widest mb-6 block">
-                  // SYSTEM CORE REPERTOIRE MAPPING
+                  {"// TOOLS WE WORK WITH"}
                 </div>
                 <div className="flex flex-wrap gap-2 mb-8">
                   {stack.map((tech, i) => (
@@ -158,17 +159,17 @@ export default function AboutSection() {
                   <div className="flex items-center justify-between">
                     <div>
                       <div className="text-sm font-semibold tracking-wide text-white mb-1 font-space">
-                        Pipeline Bandwidth Status
+                        Current Availability
                       </div>
                       <div className="text-xs text-[#64748B]">
-                        Ingesting a maximum of 2 systemic build integrations per quarter for
-                        complete isolation testing.
+                        Taking on a limited number of new projects each month so every
+                        client gets proper attention.
                       </div>
                     </div>
                     <div className="flex items-center gap-2 flex-shrink-0 ml-4">
                       <div className="w-2 h-2 rounded-full bg-[#F5A623] animate-pulse" />
                       <span className="text-xs mono text-[#F5A623] uppercase tracking-wider font-medium">
-                        READY //
+                        AVAILABLE
                       </span>
                     </div>
                   </div>
@@ -177,13 +178,15 @@ export default function AboutSection() {
 
               <div className="mt-5 glass-accent rounded-xl p-6">
                 <div className="text-xs mono text-[#64748B] uppercase tracking-widest mb-2 block">
-                  [ STRUCTURAL GOVERNANCE MANIFESTO ]
+                  [ OUR APPROACH ]
                 </div>
                 <div className="text-sm text-[#94A3B8] leading-relaxed font-light">
-                  "We operate under the assumption that manual data handoffs are unmitigated points
-                  of failure. Our core mandate is to deliver resilient, closed-loop orchestrations
-                  where uptime, security validation, and transparency metrics are hard-coded
-                  directly into the system architecture."
+                  &quot;Manual handoffs are where things break. Our job is to build
+                  automations that are reliable, easy to understand, and still make
+                  sense to your team months after we&apos;ve shipped them.&quot;
+                </div>
+                <div className="text-xs text-[#64748B] mt-4 font-light">
+                  — Brian, founder of RelayOps, based in Nairobi, Kenya
                 </div>
               </div>
             </motion.div>

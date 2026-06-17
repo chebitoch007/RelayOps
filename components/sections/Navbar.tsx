@@ -6,6 +6,7 @@ import { Menu, X } from "lucide-react";
 import Image from "next/image";
 
 const navLinks = [
+  { label: "Work", href: "/work" },
   { label: "Services", href: "#services" },
   { label: "Process", href: "#process" },
   { label: "About", href: "#about" },
@@ -216,7 +217,7 @@ export default function Navbar() {
                   Schedule Consultation
                 </a>
               <p className="text-center text-xs text-[#94A3B8]/40 font-mono">
-                // System validation nodes live worldwide
+                {"// System validation nodes live worldwide"}
               </p>
             </motion.div>
           </motion.div>

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 
@@ -48,7 +49,7 @@ export default function NotFound() {
           The page you&apos;re looking for doesn&apos;t exist or has been moved.
         </p>
 
-        <a
+        <Link
           href="/"
           className="btn-primary inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm group"
         >
@@ -57,7 +58,7 @@ export default function NotFound() {
             className="group-hover:-translate-x-1 transition-transform relative z-10"
           />
           <span>Back to home</span>
-        </a>
+        </Link>
       </motion.div>
     </div>
   );

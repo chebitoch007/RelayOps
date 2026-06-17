@@ -163,6 +163,12 @@ export default function Hero() {
             >
               {/* Dashboard card */}
               <div className="glass rounded-2xl border border-white/8 p-6 relative overflow-hidden">
+                {/* Illustrative example badge */}
+                <div className="absolute top-3 right-3 z-20">
+                  <span className="text-xs font-medium mono text-[#7B8FAB] bg-white/5 border border-white/10 px-2.5 py-1 rounded-md">
+                    Illustrative Example
+                  </span>
+                </div>
                 {/* Top bar */}
                 <div className="flex items-center justify-between mb-6">
                   <div className="flex items-center gap-2">
@@ -170,7 +176,7 @@ export default function Hero() {
                     <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/70" />
                     <div className="w-2.5 h-2.5 rounded-full bg-green-500/70" />
                   </div>
-                  <span className="text-xs mono text-[#7B8FAB]">relayops_dashboard.ai</span>
+                  <span className="text-xs mono text-[#7B8FAB]">example_dashboard.ai</span>
                   <div className="w-2 h-2 rounded-full bg-[#0EA5E9] pulse-glow" />
                 </div>
 
@@ -194,6 +200,10 @@ export default function Hero() {
                       </div>
                     </div>
                   ))}
+                </div>
+
+                <div className="text-[10px] text-[#7B8FAB]/50 mb-5 -mt-2 font-light">
+                  Example of what your dashboard could look like
                 </div>
 
                 {/* Activity graph */}

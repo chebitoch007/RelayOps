@@ -52,15 +52,15 @@ export default function CTASection() {
     const errors = { name: "", email: "", message: "", general: "" };
 
     if (!fields.name.trim()) {
-      errors.name = "Origin identity tracking label required.";
+      errors.name = "Please enter your name.";
       isValid = false;
     }
     if (!fields.email.trim() || !/^\S+@\S+\.\S+$/.test(fields.email)) {
-      errors.email = "Valid operational secure transit mail mapping required.";
+      errors.email = "Please enter a valid email address.";
       isValid = false;
     }
     if (!fields.message.trim() || fields.message.length < 15) {
-      errors.message = "System parameters message must contain at least 15 structural descriptors.";
+      errors.message = "Please add a few more details (at least 15 characters).";
       isValid = false;
     }
 
@@ -79,7 +79,7 @@ export default function CTASection() {
       setFormState("error");
       setFieldErrors((prev) => ({
         ...prev,
-        general: "System environment validation error: Target intake terminal mapping configuration absent.",
+        general: "Something went wrong on our end. Please email us directly at brian@relayops.site.",
       }));
       return;
     }
@@ -98,14 +98,14 @@ export default function CTASection() {
         setFormState("error");
         setFieldErrors((prev) => ({
           ...prev,
-          general: "Ingestion failure. Route directly to: hello@relayops.ai",
+          general: "Something went wrong sending this. Please email us directly at brian@relayops.site.",
         }));
       }
     } catch {
       setFormState("error");
       setFieldErrors((prev) => ({
         ...prev,
-        general: "Network pipe exception. Verify secure datastream pathing link.",
+        general: "Network error — please check your connection and try again.",
       }));
     }
   };
@@ -138,42 +138,42 @@ export default function CTASection() {
             transition={{ duration: 0.6 }}
           >
             <span className="font-mono text-xs text-[#F5A623] uppercase tracking-widest block mb-2">
-              [ PIPELINE AUDITING INTAKE NODE ]
+              [ GET STARTED ]
             </span>
             <h2
               id="contact-heading"
               className="text-3xl lg:text-5xl font-bold tracking-tight mb-6 font-space"
             >
-              Initiate a systemic validation protocol for your{" "}
-              <span className="gradient-text">operational bottlenecks.</span>
+              Let&apos;s fix the bottlenecks costing you{" "}
+              <span className="gradient-text">leads and time.</span>
             </h2>
             <p className="text-[#94A3B8] text-base font-light leading-relaxed mb-8">
-              Provide an engineering summary of your highest-friction asynchronous dependencies. Our
-              system analysts will evaluate your data pathing and map out a precise, custom
-              architecture profile.
+              Tell us where the manual work is happening in your business — slow lead
+              replies, missed follow-ups, repetitive admin. We&apos;ll review it and map out
+              exactly what we&apos;d automate, no obligation.
             </p>
 
             <div className="space-y-4" role="list">
               {[
                 {
                   phase: "01",
-                  title: "Intake Transmission",
-                  text: "Submit your operational parameters via the structural diagnostic terminal.",
+                  title: "Send us the details",
+                  text: "Fill in the form with a quick overview of where things are slow or manual.",
                 },
                 {
                   phase: "02",
-                  title: "Algorithmic Analysis",
-                  text: "Our senior software developers dissect and profile runtime friction spots within 24 hours.",
+                  title: "We review your process",
+                  text: "We look at what you've shared and identify the highest-impact automation within 24 hours.",
                 },
                 {
                   phase: "03",
-                  title: "Architecture Blueprint",
-                  text: "30-minute structured mapping call presenting systemic mitigation loops.",
+                  title: "30-minute call",
+                  text: "We walk you through exactly what we'd build, how it works, and what it costs.",
                 },
                 {
                   phase: "04",
-                  title: "Integration Buildout",
-                  text: "Production-grade codebase generation featuring multi-layered validation layers.",
+                  title: "We build and hand it off",
+                  text: "Once you're ready, we build it, test it thoroughly, and hand it off with a walkthrough.",
                 },
               ].map((item) => (
                 <div key={item.phase} className="flex items-start gap-4" role="listitem">
@@ -207,11 +207,10 @@ export default function CTASection() {
                   <CheckCircle size={22} className="text-[#F5A623]" />
                 </div>
                 <h3 className="text-xl font-bold text-white tracking-wide font-space">
-                  Telemetry Transmission Success
+                  Thanks — message received!
                 </h3>
                 <p className="text-[#94A3B8] text-sm leading-relaxed max-w-sm">
-                  Your workflow parameters have been ingested into our evaluation queue. A system
-                  analyst will initiate feedback pathways within a 24-hour window.
+                  We&apos;ll take a look and get back to you within 24 hours.
                 </p>
               </div>
             ) : (
@@ -222,14 +221,14 @@ export default function CTASection() {
                 className="glass rounded-xl border border-white/[0.04] p-8 flex flex-col gap-5"
               >
                 <div className="text-sm font-semibold tracking-wide text-white mb-1 font-space">
-                  Submit Architecture Requirements
+                  Get your free automation plan
                 </div>
 
                 <div className="grid sm:grid-cols-2 gap-4">
                   {/* Name */}
                   <div className="flex flex-col gap-1.5">
                     <label htmlFor={FIELD_IDS.name} className="text-xs font-mono text-[#94A3B8] uppercase">
-                      Origin Name{" "}
+                      Your Name{" "}
                       <span className="text-[#F5A623]" aria-hidden="true">*</span>
                     </label>
                     <input
@@ -241,7 +240,7 @@ export default function CTASection() {
                       aria-required="true"
                       aria-invalid={!!fieldErrors.name}
                       aria-describedby={fieldErrors.name ? "error-name" : undefined}
-                      placeholder="e.g., Alexander"
+                      placeholder="e.g., Sarah Mitchell"
                       className={fieldErrors.name ? inputError : inputNormal}
                     />
                     {fieldErrors.name && (
@@ -250,7 +249,7 @@ export default function CTASection() {
                         className="text-[10px] text-red-400 font-mono"
                         role="alert"
                       >
-                        [!] {fieldErrors.name}
+                        {fieldErrors.name}
                       </span>
                     )}
                   </div>
@@ -258,7 +257,7 @@ export default function CTASection() {
                   {/* Email */}
                   <div className="flex flex-col gap-1.5">
                     <label htmlFor={FIELD_IDS.email} className="text-xs font-mono text-[#94A3B8] uppercase">
-                      Transport Email{" "}
+                      Email{" "}
                       <span className="text-[#F5A623]" aria-hidden="true">*</span>
                     </label>
                     <input
@@ -270,7 +269,7 @@ export default function CTASection() {
                       aria-required="true"
                       aria-invalid={!!fieldErrors.email}
                       aria-describedby={fieldErrors.email ? "error-email" : undefined}
-                      placeholder="alex@enterprise.io"
+                      placeholder="sarah@yourcompany.com"
                       className={fieldErrors.email ? inputError : inputNormal}
                     />
                     {fieldErrors.email && (
@@ -279,7 +278,7 @@ export default function CTASection() {
                         className="text-[10px] text-red-400 font-mono"
                         role="alert"
                       >
-                        [!] {fieldErrors.email}
+                        {fieldErrors.email}
                       </span>
                     )}
                   </div>
@@ -288,7 +287,7 @@ export default function CTASection() {
                 {/* Business */}
                 <div className="flex flex-col gap-1.5">
                   <label htmlFor="form-business" className="text-xs font-mono text-[#94A3B8] uppercase">
-                    Institutional Entity
+                    Company / Business
                   </label>
                   <input
                     id="form-business"
@@ -296,7 +295,7 @@ export default function CTASection() {
                     name="business"
                     value={fields.business}
                     onChange={handleChange}
-                    placeholder="e.g., Nexus Logistics Ltd"
+                    placeholder="e.g., Acme Marketing Agency"
                     className={inputNormal}
                   />
                 </div>
@@ -304,7 +303,7 @@ export default function CTASection() {
                 {/* Message */}
                 <div className="flex flex-col gap-1.5">
                   <label htmlFor={FIELD_IDS.message} className="text-xs font-mono text-[#94A3B8] uppercase">
-                    Bottleneck Vector Diagnosis{" "}
+                    What&apos;s slowing you down?{" "}
                     <span className="text-[#F5A623]" aria-hidden="true">*</span>
                   </label>
                   <textarea
@@ -316,7 +315,7 @@ export default function CTASection() {
                     aria-required="true"
                     aria-invalid={!!fieldErrors.message}
                     aria-describedby={fieldErrors.message ? "error-message" : undefined}
-                    placeholder="Outline your runtime manual interventions or distribution errors..."
+                    placeholder="e.g., We're slow to respond to new leads and lose deals to faster competitors"
                     className={`${fieldErrors.message ? inputError : inputNormal} resize-none leading-relaxed`}
                   />
                   {fieldErrors.message && (
@@ -325,7 +324,7 @@ export default function CTASection() {
                       className="text-[10px] text-red-400 font-mono"
                       role="alert"
                     >
-                      [!] {fieldErrors.message}
+                      {fieldErrors.message}
                     </span>
                   )}
                 </div>
@@ -337,7 +336,7 @@ export default function CTASection() {
                     aria-live="assertive"
                   >
                     <AlertCircle size={14} className="shrink-0" />
-                    <span>[EXCEPTION]: {fieldErrors.general}</span>
+                    <span>{fieldErrors.general}</span>
                   </div>
                 )}
 
@@ -351,11 +350,11 @@ export default function CTASection() {
                   {formState === "loading" ? (
                     <>
                       <Loader2 size={13} className="animate-spin" />
-                      <span>Executing Secure Packet Upload...</span>
+                      <span>Sending...</span>
                     </>
                   ) : (
                     <>
-                      <span>Submit Pipeline Requirements</span>
+                      <span>Get My Free Plan</span>
                       <ArrowRight size={13} />
                     </>
                   )}
