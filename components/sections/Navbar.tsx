@@ -4,13 +4,14 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const navLinks = [
   { label: "Work", href: "/work" },
-  { label: "Services", href: "#services" },
-  { label: "Process", href: "#process" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
+  { label: "Services", href: "/#services" },
+  { label: "Process", href: "/#process" },
+  { label: "About", href: "/#about" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 /** Returns all focusable elements within a container */
@@ -28,6 +29,7 @@ export default function Navbar() {
 
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const drawerRef = useRef<HTMLDivElement>(null);
+  const wasMobileOpenRef = useRef(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 30);
@@ -43,11 +45,12 @@ export default function Navbar() {
     };
   }, [mobileOpen]);
 
-  // Return focus to hamburger button after menu closes
+  // Return focus to hamburger button after the user closes the menu
   useEffect(() => {
-    if (!mobileOpen) {
+    if (wasMobileOpenRef.current && !mobileOpen) {
       menuButtonRef.current?.focus();
     }
+    wasMobileOpenRef.current = mobileOpen;
   }, [mobileOpen]);
 
   const closeMenu = useCallback(() => setMobileOpen(false), []);
@@ -102,8 +105,8 @@ export default function Navbar() {
 
           {/* Logo */}
           
-            <a
-              href="#"
+            <Link
+              href="/"
               className="flex items-center gap-2.5 sm:gap-3 group z-50 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F5A623] p-1"
             >
             <div className="relative w-8 h-8 sm:w-9 sm:h-9">
@@ -120,30 +123,30 @@ export default function Navbar() {
               <span className="font-bold tracking-tight text-white">Relay</span>
               <span className="font-bold tracking-tight text-[#F5A623]">Ops</span>
             </div>
-          </a>
+          </Link>
 
-          {/* Desktop nav — CSS-only underline hover, no Framer Motion */}
+          {/* Desktop nav - CSS-only underline hover, no Framer Motion */}
           <nav className="hidden md:flex items-center gap-8" aria-label="Main navigation">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 className="text-sm font-medium text-[#94A3B8] hover:text-white transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-[#F5A623] hover:after:w-full after:transition-all after:duration-300 pb-1 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F5A623]"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center">
             
-              <a
-                href="#contact"
+              <Link
+                href="/#contact"
                 className="btn-primary px-5 py-2.5 rounded-lg text-sm font-medium transition-all transform focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
               >
                 Schedule Consultation
-              </a>
+              </Link>
           </div>
 
           {/* Mobile menu trigger */}
@@ -188,7 +191,7 @@ export default function Navbar() {
                 System Interface Directory
               </div>
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.href}
                   href={link.href}
                   onClick={closeMenu}
@@ -196,9 +199,9 @@ export default function Navbar() {
                 >
                   <span>{link.label}</span>
                   <span className="text-[#F5A623] opacity-0 group-hover:opacity-100 transition-opacity text-sm font-mono">
-                    →
+                    &rarr;
                   </span>
-                </a>
+                </Link>
               ))}
             </motion.nav>
 
@@ -209,13 +212,13 @@ export default function Navbar() {
               className="w-full flex flex-col gap-4"
             >
               
-                <a
-                  href="#contact"
+                <Link
+                  href="/#contact"
                   onClick={closeMenu}
                   className="btn-primary rounded-xl py-3.5 text-center text-sm font-medium shadow-lg shadow-[#F5A623]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                 >
                   Schedule Consultation
-                </a>
+                </Link>
               <p className="text-center text-xs text-[#94A3B8]/40 font-mono">
                 {"// System validation nodes live worldwide"}
               </p>

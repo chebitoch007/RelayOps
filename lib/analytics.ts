@@ -6,12 +6,12 @@ import type { Metric } from "web-vitals";
  * In production, replace the console.log with a POST to your analytics service.
  *
  * Tracked metrics:
- * - LCP  (Largest Contentful Paint)   — loading performance
- * - FID  (First Input Delay)          — interactivity
- * - CLS  (Cumulative Layout Shift)    — visual stability
- * - FCP  (First Contentful Paint)     — first render speed
- * - TTFB (Time to First Byte)         — server response speed
- * - INP  (Interaction to Next Paint)  — responsiveness (Core Web Vital)
+ * - LCP  (Largest Contentful Paint)    -  loading performance
+ * - FID  (First Input Delay)           -  interactivity
+ * - CLS  (Cumulative Layout Shift)     -  visual stability
+ * - FCP  (First Contentful Paint)      -  first render speed
+ * - TTFB (Time to First Byte)          -  server response speed
+ * - INP  (Interaction to Next Paint)   -  responsiveness (Core Web Vital)
  */
 export function reportWebVitals(metric: Metric): void {
   if (process.env.NODE_ENV === "development") {

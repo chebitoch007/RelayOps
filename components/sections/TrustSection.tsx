@@ -17,7 +17,7 @@ const benefits = [
   {
     icon: <Zap size={20} />,
     title: "Respond to Leads Instantly",
-    desc: "AI responds to inbound leads in under 2 seconds — qualifying, tagging, and routing them before a human would even open their inbox.",
+    desc: "AI responds to inbound leads in under 2 seconds - qualifying, tagging, and routing them before a human would even open their inbox.",
     color: "#0A84FF",
     delay: 0.1,
   },
@@ -31,7 +31,7 @@ const benefits = [
   {
     icon: <ArrowUpRight size={20} />,
     title: "Scale Without Hiring",
-    desc: "Handle 10x the volume without adding headcount. AI systems scale linearly with demand — your costs don't.",
+    desc: "Handle 10x the volume without adding headcount. AI systems scale linearly with demand - your costs don't.",
     color: "#00E5A0",
     delay: 0.3,
   },

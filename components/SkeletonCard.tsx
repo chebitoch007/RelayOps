@@ -14,7 +14,7 @@ interface SkeletonCardProps {
 /**
  * Pure-CSS shimmer skeleton card.
  * Matches the general proportions of ServiceCard, BenefitCard, and StepCard.
- * Uses CSS animation only — no Framer Motion overhead.
+ * Uses CSS animation only  -  no Framer Motion overhead.
  */
 export default function SkeletonCard({
   lines = 3,

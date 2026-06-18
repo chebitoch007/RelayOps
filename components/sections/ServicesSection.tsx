@@ -26,7 +26,7 @@ const services = [
   {
     icon: <Mail size={22} />,
     title: "Cold Email Automation",
-    desc: "Personalized outreach sequences powered by AI — research, write, send, and follow up at scale without losing the human touch.",
+    desc: "Personalized outreach sequences powered by AI - research, write, send, and follow up at scale without losing the human touch.",
     tags: ["Personalization", "A/B Testing", "Analytics"],
     color: "#7B61FF",
     gradient: "from-[#7B61FF]/10 to-transparent",
@@ -34,7 +34,7 @@ const services = [
   {
     icon: <MessageSquare size={22} />,
     title: "WhatsApp Automation",
-    desc: "Automate customer communication on WhatsApp Business. Respond, qualify, book, and follow up — all on the channel they already use.",
+    desc: "Automate customer communication on WhatsApp Business. Respond, qualify, book, and follow up - all on the channel they already use.",
     tags: ["WhatsApp API", "Broadcast", "Bot Flows"],
     color: "#00E5A0",
     gradient: "from-[#00E5A0]/10 to-transparent",
@@ -50,7 +50,7 @@ const services = [
   {
     icon: <Workflow size={22} />,
     title: "AI Workflow Integrations",
-    desc: "Connect your tools and automate the glue work between them. From CRMs to Slack to spreadsheets — we wire it all together.",
+    desc: "Connect your tools and automate the glue work between them. From CRMs to Slack to spreadsheets - we wire it all together.",
     tags: ["Make.com", "n8n", "Zapier"],
     color: "#7B61FF",
     gradient: "from-[#7B61FF]/10 to-transparent",
@@ -124,7 +124,7 @@ export default function ServicesSection() {
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="services" className="relative py-28">
+    <section id="services" className="relative overflow-hidden py-28">
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full -z-10"
         style={{
@@ -155,7 +155,7 @@ export default function ServicesSection() {
             transition={{ delay: 0.2, duration: 0.6 }}
             className="text-[#7B8FAB] mt-4 max-w-lg mx-auto font-light"
           >
-            Practical, deployed AI — not prototypes. Every service is scoped, built, and handed off
+            Practical, deployed AI - not prototypes. Every service is scoped, built, and handed off
             ready to run.
           </motion.p>
         </div>

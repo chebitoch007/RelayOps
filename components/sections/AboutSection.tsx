@@ -21,13 +21,13 @@ const designPrinciples = [
   {
     icon: <Terminal size={15} />,
     title: "No black-box AI guesswork",
-    desc: "Every automation follows clear, predictable logic. You'll always know exactly what it does and why — no mystery prompts, no surprises.",
+    desc: "Every automation follows clear, predictable logic. You'll always know exactly what it does and why - no mystery prompts, no surprises.",
     color: "#F5A623",
   },
   {
     icon: <ShieldCheck size={15} />,
     title: "Built to handle errors gracefully",
-    desc: "If something goes wrong — an API hiccup, a duplicate form submission — the system recovers safely instead of breaking or duplicating your data.",
+    desc: "If something goes wrong - an API hiccup, a duplicate form submission - the system recovers safely instead of breaking or duplicating your data.",
     color: "#0EA5E9",
   },
   {
@@ -88,8 +88,8 @@ export default function AboutSection() {
                 className="text-[#64748B] leading-relaxed mb-8 font-normal text-base"
               >
                 RelayOps is a small, hands-on automation studio. We look at the manual,
-                repetitive parts of your business — replying to leads, booking calls,
-                chasing follow-ups — and turn them into systems that just work quietly
+                repetitive parts of your business - replying to leads, booking calls,
+                chasing follow-ups - and turn them into systems that just work quietly
                 in the background, every day.
               </motion.p>
 
@@ -186,7 +186,7 @@ export default function AboutSection() {
                   sense to your team months after we&apos;ve shipped them.&quot;
                 </div>
                 <div className="text-xs text-[#64748B] mt-4 font-light">
-                  — Brian, founder of RelayOps, based in Nairobi, Kenya
+ - Brian, founder of RelayOps, based in Nairobi, Kenya
                 </div>
               </div>
             </motion.div>

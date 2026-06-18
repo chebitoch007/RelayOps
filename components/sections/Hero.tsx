@@ -61,7 +61,7 @@ export default function Hero() {
                 width={340}
                 height={120}
                 priority
-                className="mb-2"
+                className="mb-2 h-auto w-full max-w-[340px]"
               />
             </motion.div>
 
@@ -70,10 +70,10 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="inline-flex"
+              className="inline-flex max-w-full"
             >
               <span
-                className="glass-accent px-4 py-1.5 rounded-full text-xs font-medium mono flex items-center gap-2"
+                className="glass-accent max-w-full px-4 py-1.5 rounded-full text-xs font-medium mono flex flex-wrap items-center gap-2"
                 style={{ color: "#F5A623" }}
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-[#F5A623] pulse-glow inline-block" />

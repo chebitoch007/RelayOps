@@ -105,7 +105,7 @@ export default function CTASection() {
       setFormState("error");
       setFieldErrors((prev) => ({
         ...prev,
-        general: "Network error — please check your connection and try again.",
+        general: "Network error - please check your connection and try again.",
       }));
     }
   };
@@ -148,7 +148,7 @@ export default function CTASection() {
               <span className="gradient-text">leads and time.</span>
             </h2>
             <p className="text-[#94A3B8] text-base font-light leading-relaxed mb-8">
-              Tell us where the manual work is happening in your business — slow lead
+              Tell us where the manual work is happening in your business - slow lead
               replies, missed follow-ups, repetitive admin. We&apos;ll review it and map out
               exactly what we&apos;d automate, no obligation.
             </p>
@@ -207,7 +207,7 @@ export default function CTASection() {
                   <CheckCircle size={22} className="text-[#F5A623]" />
                 </div>
                 <h3 className="text-xl font-bold text-white tracking-wide font-space">
-                  Thanks — message received!
+                  Thanks - message received!
                 </h3>
                 <p className="text-[#94A3B8] text-sm leading-relaxed max-w-sm">
                   We&apos;ll take a look and get back to you within 24 hours.

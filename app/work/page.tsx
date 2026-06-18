@@ -2,6 +2,7 @@
 
 import Navbar from "@/components/sections/Navbar";
 import Footer from "@/components/sections/Footer";
+import Link from "next/link";
 
 interface CaseStudy {
   id: string;
@@ -117,7 +118,7 @@ export default function WorkPage() {
                       <ul className="space-y-2">
                         {study.results.slice(0, 2).map((result, idx) => (
                           <li key={idx} className="text-sm text-[#94A3B8] flex items-start gap-2">
-                            <span className="text-[#F5A623] mt-0.5">→</span>
+                            <span className="text-[#F5A623] mt-0.5">&rarr;</span>
                             <span>{result}</span>
                           </li>
                         ))}
@@ -152,9 +153,12 @@ export default function WorkPage() {
             <p className="text-lg text-[#94A3B8] mb-8">
               Let&apos;s discuss how we can drive measurable results for your organization.
             </p>
-            <button className="px-8 py-3 rounded-xl bg-[#F5A623] text-[#04060A] font-bold hover:bg-[#E59512] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F5A623]">
+            <Link
+              href="/#contact"
+              className="inline-flex px-8 py-3 rounded-xl bg-[#F5A623] text-[#04060A] font-bold hover:bg-[#E59512] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F5A623]"
+            >
               Schedule a Call
-            </button>
+            </Link>
           </div>
         </section>
       </main>

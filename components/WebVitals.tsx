@@ -5,7 +5,7 @@ import { reportWebVitals } from "@/lib/analytics";
 
 /**
  * Thin client component that registers the Web Vitals reporter.
- * Imported once in RootLayout — zero render output.
+ * Imported once in RootLayout  -  zero render output.
  */
 export default function WebVitals() {
   useReportWebVitals(reportWebVitals);

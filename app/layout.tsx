@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.relayops.site"),
   title: {
-    default: "RelayOps — AI Automation for Agencies & Service Businesses",
+    default: "RelayOps - AI Automation for Agencies & Service Businesses",
     template: "%s | RelayOps",
   },
   description:
@@ -26,24 +26,24 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://www.relayops.site",
     siteName: "RelayOps",
-    title: "RelayOps — AI Automation for Agencies & Service Businesses",
+    title: "RelayOps - AI Automation for Agencies & Service Businesses",
     description:
-      "Stop following up leads manually. We build AI systems that respond in seconds, qualify leads, and book calls — without your team touching it.",
+      "Stop following up leads manually. We build AI systems that respond in seconds, qualify leads, and book calls - without your team touching it.",
     images: [
       {
         url: "/icon.png",
         width: 1200,
         height: 630,
-        alt: "RelayOps — AI Automation Systems",
+        alt: "RelayOps - AI Automation Systems",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "RelayOps — AI Automation for Agencies",
+    title: "RelayOps - AI Automation for Agencies",
     description:
       "Stop following up leads manually. AI responds in 2 seconds, qualifies, and books calls automatically.",
-    images: ["/og-image.png"],
+    images: ["/opengraph-image.png"],
   },
   robots: {
     index: true,
@@ -58,16 +58,19 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth" data-scroll-behavior="smooth">
       <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-
         {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-BQP2H77QJ9"

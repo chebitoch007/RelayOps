@@ -13,7 +13,7 @@ const demos = [
     label: "Lead Bot",
     title: "AI Lead Qualification Bot",
     description:
-      "Deployed on a B2B agency's website — the bot qualifies inbound leads, asks discovery questions, scores them, and books calls with qualified prospects automatically.",
+      "Deployed on a B2B agency's website - the bot qualifies inbound leads, asks discovery questions, scores them, and books calls with qualified prospects automatically.",
     metrics: [
       { label: "Response time", value: "< 2s" },
       { label: "Qualification rate", value: "68%" },
@@ -24,8 +24,8 @@ const demos = [
       { role: "bot", text: "Hi! I can help you explore our services. What's your main challenge?" },
       { role: "user", text: "We need to automate our lead follow-up process" },
       { role: "bot", text: "Got it. What's your current monthly lead volume?" },
-      { role: "user", text: "Around 200–300 per month" },
-      { role: "bot", text: "Perfect fit. I'm booking you a strategy call — what time works?" },
+      { role: "user", text: "Around 200-300 per month" },
+      { role: "bot", text: "Perfect fit. I'm booking you a strategy call - what time works?" },
     ],
   },
   {
@@ -34,7 +34,7 @@ const demos = [
     label: "WhatsApp",
     title: "Automated WhatsApp Assistant",
     description:
-      "Built for an e-commerce brand — handles order status queries, product FAQs, and re-engagement campaigns over WhatsApp with zero human intervention.",
+      "Built for an e-commerce brand - handles order status queries, product FAQs, and re-engagement campaigns over WhatsApp with zero human intervention.",
     metrics: [
       { label: "Messages handled", value: "1,200+/mo" },
       { label: "Avg response time", value: "3s" },
@@ -43,9 +43,9 @@ const demos = [
     color: "#0A84FF",
     mockItems: [
       { role: "user", text: "Hey, where is my order #4521?" },
-      { role: "bot", text: "Your order is out for delivery! ETA: today 2–4 PM 📦" },
+      { role: "bot", text: "Your order is out for delivery! ETA: today 2-4 PM." },
       { role: "user", text: "Can I change the delivery address?" },
-      { role: "bot", text: "Yes, sending you a secure link to update it now →" },
+      { role: "bot", text: "Yes, sending you a secure link to update it now ->" },
     ],
   },
   {
@@ -54,7 +54,7 @@ const demos = [
     label: "Booking System",
     title: "AI Appointment Booking Workflow",
     description:
-      "Complete booking automation for a coaching business — from intake form to calendar invite, reminder sequences, and no-show re-scheduling. Fully hands-free.",
+      "Complete booking automation for a coaching business - from intake form to calendar invite, reminder sequences, and no-show re-scheduling. Fully hands-free.",
     metrics: [
       { label: "No-shows reduced", value: "65%" },
       { label: "Bookings automated", value: "100%" },
@@ -110,7 +110,7 @@ function DemoMockChat({
           >
             {item.role === "system" && (
               <span style={{ color }} className="mr-1">
-                ›
+                &rsaquo;
               </span>
             )}
             {item.text}

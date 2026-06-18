@@ -1,13 +1,14 @@
 "use client";
 
 import { ExternalLink, Mail, ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 
 const footerLinks = [
-  { label: "Services", href: "#services" },
-  { label: "Process", href: "#process" },
-  { label: "Work", href: "#work" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
+  { label: "Services", href: "/#services" },
+  { label: "Process", href: "/#process" },
+  { label: "Work", href: "/#work" },
+  { label: "About", href: "/#about" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 const socials = [
@@ -41,7 +42,7 @@ export default function Footer() {
           
           {/* Brand Presentation Identity Column */}
           <div className="sm:col-span-2 lg:col-span-2 flex flex-col items-start">
-            <a href="#" className="flex items-center gap-3 mb-4 group">
+            <Link href="/" className="flex items-center gap-3 mb-4 group">
               <div
                 className="w-8 h-8 rounded-lg flex items-center justify-center transform transition-transform group-hover:scale-105"
                 style={{
@@ -58,7 +59,7 @@ export default function Footer() {
               <span className="font-bold tracking-tight text-white text-lg" style={{ fontFamily: "Syne" }}>
                 RELAY<span className="gradient-text text-[#F5A623]">OPS</span>
               </span>
-            </a>
+            </Link>
             
             <p className="text-sm text-[#7B8FAB] leading-relaxed max-w-sm font-light mb-6">
               A lean AI automation studio helping agencies and service businesses
@@ -89,7 +90,7 @@ export default function Footer() {
             <ul className="space-y-2.5">
               {footerLinks.map((link) => (
                 <li key={link.href}>
-                  <a
+                  <Link
                     href={link.href}
                     className="text-sm text-[#7B8FAB] hover:text-white transition-colors duration-200 flex items-center gap-1 group w-max"
                   >
@@ -98,7 +99,7 @@ export default function Footer() {
                       size={12}
                       className="text-[#7B8FAB]/40 group-hover:text-[#0EA5E9] transform opacity-0 group-hover:opacity-100 -translate-y-0.5 translate-x-[-4px] group-hover:translate-x-0 transition-all duration-200"
                     />
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -147,10 +148,10 @@ export default function Footer() {
         {/* Closing Platform Legalities Layout Segment */}
         <div className="border-t border-white/[0.06] pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <span className="text-xs text-[#7B8FAB]/70 font-light text-center sm:text-left order-2 sm:order-1">
-            © {new Date().getFullYear()} RelayOps. All rights reserved.
+            &copy; {new Date().getFullYear()} RelayOps. All rights reserved.
           </span>
           <span className="text-xs font-mono text-[#7B8FAB]/40 text-center sm:text-right order-1 sm:order-2">
-            Built with Next.js · Deployed on Vercel
+            Built with Next.js &middot; Deployed on Vercel
           </span>
         </div>
         
