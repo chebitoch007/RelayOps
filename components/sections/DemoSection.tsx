@@ -13,11 +13,11 @@ const demos = [
     label: "Lead Bot",
     title: "AI Lead Qualification Bot",
     description:
-      "Deployed on a B2B agency's website - the bot qualifies inbound leads, asks discovery questions, scores them, and books calls with qualified prospects automatically.",
-    metrics: [
-      { label: "Response time", value: "< 2s" },
-      { label: "Qualification rate", value: "68%" },
-      { label: "Hours saved/week", value: "14h" },
+      "For an agency website - the bot qualifies inbound leads, asks discovery questions, scores them, and books calls with qualified prospects automatically.",
+    highlights: [
+      { label: "Response time", value: "Seconds, not hours" },
+      { label: "Works", value: "24/7, no missed leads" },
+      { label: "Booking", value: "Straight to your calendar" },
     ],
     color: "#00E5A0",
     mockItems: [
@@ -34,11 +34,11 @@ const demos = [
     label: "WhatsApp",
     title: "Automated WhatsApp Assistant",
     description:
-      "Built for an e-commerce brand - handles order status queries, product FAQs, and re-engagement campaigns over WhatsApp with zero human intervention.",
-    metrics: [
-      { label: "Messages handled", value: "1,200+/mo" },
-      { label: "Avg response time", value: "3s" },
-      { label: "Support tickets saved", value: "80%" },
+      "For an e-commerce brand - handles order status queries, product FAQs, and re-engagement campaigns over WhatsApp with zero human intervention.",
+    highlights: [
+      { label: "Coverage", value: "Order status & FAQs" },
+      { label: "Response time", value: "Instant" },
+      { label: "Escalation", value: "Hands off to a human" },
     ],
     color: "#0A84FF",
     mockItems: [
@@ -54,11 +54,11 @@ const demos = [
     label: "Booking System",
     title: "AI Appointment Booking Workflow",
     description:
-      "Complete booking automation for a coaching business - from intake form to calendar invite, reminder sequences, and no-show re-scheduling. Fully hands-free.",
-    metrics: [
-      { label: "No-shows reduced", value: "65%" },
-      { label: "Bookings automated", value: "100%" },
-      { label: "Admin time saved", value: "18h/mo" },
+      "For a coaching business - from intake form to calendar invite, reminder sequences, and no-show re-scheduling. Fully hands-free.",
+    highlights: [
+      { label: "Reminders", value: "Sent automatically" },
+      { label: "No-shows", value: "Auto re-booking offered" },
+      { label: "Setup", value: "Runs without manual checks" },
     ],
     color: "#7B61FF",
     mockItems: [
@@ -174,7 +174,7 @@ export default function DemoSection() {
             transition={{ delay: 0.2, duration: 0.6 }}
             className="text-[#7B8FAB] mt-4 max-w-md mx-auto font-light"
           >
-            Three examples of automation systems we build for clients.
+            Three examples of how we&apos;d approach common automation needs. Illustrative, not client work.
           </motion.p>
         </div>
 
@@ -232,7 +232,7 @@ export default function DemoSection() {
                   {demo.icon}
                 </div>
                 <span className="text-xs mono" style={{ color: demo.color }}>
-                  Deployed System
+                  Example Build
                 </span>
               </div>
               <h3 className="text-2xl lg:text-3xl font-bold mb-4 font-space">{demo.title}</h3>
@@ -240,9 +240,9 @@ export default function DemoSection() {
             </div>
 
             <div className="grid grid-cols-3 gap-3">
-              {demo.metrics.map((m) => (
+              {demo.highlights.map((h) => (
                 <div
-                  key={m.label}
+                  key={h.label}
                   className="rounded-xl p-4 text-center"
                   style={{
                     background: `${demo.color}08`,
@@ -250,22 +250,21 @@ export default function DemoSection() {
                   }}
                 >
                   <div
-                    className="text-xl font-bold mb-1 font-space"
+                    className="text-sm font-bold mb-1 font-space leading-snug"
                     style={{ color: demo.color }}
                   >
-                    {m.value}
+                    {h.value}
                   </div>
-                  <div className="text-xs text-[#7B8FAB]">{m.label}</div>
+                  <div className="text-xs text-[#7B8FAB]">{h.label}</div>
                 </div>
               ))}
             </div>
 
-            
-              <a
-                href="#contact"
-                className="inline-flex items-center gap-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 rounded"
-                style={{ color: demo.color }}
-              >
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 rounded"
+              style={{ color: demo.color }}
+            >
               Build something similar <ChevronRight size={14} />
             </a>
           </div>
