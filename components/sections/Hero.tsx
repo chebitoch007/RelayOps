@@ -7,24 +7,24 @@ import { ArrowRight, Zap, Bot, TrendingUp } from "lucide-react";
 const floatingCards = [
   {
     icon: <Bot size={14} />,
-    label: "Lead qualified",
-    value: "2 seconds",
+    label: "Qualifies leads",
+    value: "instantly, 24/7",
     color: "#F5A623",
     position: "top-[15%] right-[8%]",
     delay: 0,
   },
   {
     icon: <Zap size={14} />,
-    label: "Workflows automated",
-    value: "47 this week",
+    label: "Books calls",
+    value: "straight to calendar",
     color: "#0EA5E9",
     position: "top-[55%] right-[3%]",
     delay: 0.5,
   },
   {
     icon: <TrendingUp size={14} />,
-    label: "Hours saved",
-    value: "12h / week",
+    label: "Follow-up",
+    value: "runs without you",
     color: "#6366F1",
     position: "bottom-[20%] right-[12%]",
     delay: 1,
@@ -77,7 +77,7 @@ export default function Hero() {
                 style={{ color: "#F5A623" }}
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-[#F5A623] pulse-glow inline-block" />
-                AI automation for agencies &amp; service businesses
+                Stop losing deals to slow follow-up
               </span>
             </motion.div>
 
@@ -104,8 +104,8 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 0.25 }}
               className="text-lg text-[#7B8FAB] leading-relaxed max-w-lg font-light"
             >
-              We build AI systems that respond to new leads in seconds, book appointments automatically,
-              and follow up without anyone on your team lifting a finger.
+              Your next qualified lead gets a response in seconds, a call booked automatically,
+              and a follow-up sent — without anyone on your team touching it.
             </motion.p>
 
             {/* CTA Buttons */}
@@ -126,7 +126,7 @@ export default function Hero() {
                 />
               </a>
               <a href="#services" className="btn-outline px-7 py-3.5 rounded-xl text-base">
-                See What We Build
+                See How It Works
               </a>
             </motion.div>
 
@@ -138,10 +138,10 @@ export default function Hero() {
               className="flex flex-wrap gap-3 pt-2"
             >
               {[
-                "Lead Follow-Up",
-                "AI Chatbots",
+                "Never miss a lead",
+                "Calls booked automatically",
                 "WhatsApp Automation",
-                "Appointment Booking",
+                "No manual follow-up",
               ].map((tag) => (
                 <span
                   key={tag}
@@ -284,24 +284,29 @@ export default function Hero() {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.7 + card.delay, duration: 0.5 }}
-                style={{
-                  animation: `float ${4 + card.delay}s ease-in-out ${card.delay}s infinite`,
-                }}
+                aria-hidden="true"
               >
-                <div className="glass-accent rounded-xl px-4 py-3 flex items-center gap-3 whitespace-nowrap shadow-xl">
-                  <div
-                    className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0"
-                    style={{ background: `${card.color}18`, color: card.color }}
-                  >
-                    {card.icon}
-                  </div>
-                  <div>
-                    <div className="text-xs text-[#7B8FAB]">{card.label}</div>
+                {/* Inner wrapper carries the CSS float bob so it doesn't conflict with Framer entry */}
+                <div
+                  style={{
+                    animation: `float ${4 + card.delay}s ease-in-out ${card.delay}s infinite`,
+                  }}
+                >
+                  <div className="glass-accent rounded-xl px-4 py-3 flex items-center gap-3 whitespace-nowrap shadow-xl">
                     <div
-                      className="text-sm font-semibold"
-                      style={{ fontFamily: "Syne", color: card.color }}
+                      className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0"
+                      style={{ background: `${card.color}18`, color: card.color }}
                     >
-                      {card.value}
+                      {card.icon}
+                    </div>
+                    <div>
+                      <div className="text-xs text-[#7B8FAB]">{card.label}</div>
+                      <div
+                        className="text-sm font-semibold"
+                        style={{ fontFamily: "Syne", color: card.color }}
+                      >
+                        {card.value}
+                      </div>
                     </div>
                   </div>
                 </div>

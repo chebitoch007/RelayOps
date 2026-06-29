@@ -16,15 +16,15 @@ const benefits = [
   },
   {
     icon: <Zap size={20} />,
-    title: "Respond to Leads Instantly",
-    desc: "AI responds to inbound leads in under 2 seconds - qualifying, tagging, and routing them before a human would even open their inbox.",
+    title: "No lead goes cold overnight",
+    desc: "Inbound enquiries get a response in seconds — qualifying and routing them before a competitor even wakes up. Being first to reply wins deals.",
     color: "#0A84FF",
     delay: 0.1,
   },
   {
     icon: <RefreshCw size={20} />,
-    title: "Automate Repetitive Tasks",
-    desc: "From follow-up sequences to appointment confirmations, we map and automate your highest-frequency workflows with precision.",
+    title: "Stop doing the same tasks twice",
+    desc: "Follow-up sequences, appointment confirmations, CRM updates — the work that fills afternoons and gets dropped when things get busy. Automated, reliably, every time.",
     color: "#7B61FF",
     delay: 0.2,
   },
@@ -113,8 +113,8 @@ export default function TrustSection() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-4xl lg:text-5xl font-bold tracking-tight"
           >
-            Built for results,{" "}
-            <span className="gradient-text">not complexity</span>
+            Your leads get followed up.{" "}
+            <span className="gradient-text">Your team stays focused.</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
