@@ -27,12 +27,12 @@ import {
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
 const techStack = [
-  { category: "Automation layer", tools: ["n8n (self-hosted)", "Make.com"] },
-  { category: "AI / NLP", tools: ["OpenAI GPT-4o", "Anthropic Claude"] },
-  { category: "Conversation", tools: ["Typebot", "WhatsApp Business API"] },
-  { category: "Scheduling", tools: ["Cal.com", "Google Calendar API"] },
-  { category: "CRM & data", tools: ["Airtable", "Supabase"] },
-  { category: "Notifications", tools: ["Twilio SMS", "SendGrid"] },
+  { category: "Frontend / form", tools: ["Next.js (App Router)", "React Hook Form + Zod"] },
+  { category: "AI / qualification", tools: ["Google Gemini 2.5 Flash", "Structured output (JSON)"] },
+  { category: "Automation layer", tools: ["n8n (self-hosted)", "Webhook orchestration"] },
+  { category: "Scheduling", tools: ["Calendly", "Webhook signature verification"] },
+  { category: "CRM & data", tools: ["Google Sheets", "Adapter pattern (swappable)"] },
+  { category: "Notifications", tools: ["Gmail SMTP", "Lead + founder emails"] },
 ];
 
 const workflowSteps = [
@@ -69,7 +69,7 @@ const workflowSteps = [
     color: "#F5A623",
     icon: <Database size={16} />,
     title: "Lead record written to CRM",
-    desc: "Name, contact details, qualification score, responses, booked time, and source are written to Airtable or Supabase. The sales rep opens their day with a populated CRM, not an inbox full of raw form submissions.",
+    desc: "Name, contact details, qualification score, responses, booked time, and source are written to Google Sheets. The sales rep opens their day with a populated CRM, not an inbox full of raw form submissions.",
   },
   {
     id: "06",
@@ -114,13 +114,13 @@ const keyAutomations = [
 ];
 
 const architectureNodes = [
-  { label: "Website / Ad funnel", sub: "Entry point", col: 0, row: 0, color: "#F5A623" },
-  { label: "Chatbot (Typebot)", sub: "Conversation UI", col: 1, row: 0, color: "#0EA5E9" },
+  { label: "Lead form (Next.js)", sub: "Entry point", col: 0, row: 0, color: "#F5A623" },
+  { label: "API route /api/leads", sub: "Server logic", col: 1, row: 0, color: "#0EA5E9" },
   { label: "n8n workflow", sub: "Orchestration", col: 2, row: 0, color: "#6366F1" },
-  { label: "GPT-4o", sub: "Qualification AI", col: 1, row: 1, color: "#6366F1" },
-  { label: "Cal.com", sub: "Scheduling", col: 2, row: 1, color: "#00E5A0" },
-  { label: "Airtable / Supabase", sub: "CRM & data", col: 3, row: 0, color: "#F5A623" },
-  { label: "Twilio / WhatsApp", sub: "Reminders", col: 3, row: 1, color: "#0EA5E9" },
+  { label: "Gemini 2.5 Flash", sub: "Qualification AI", col: 1, row: 1, color: "#6366F1" },
+  { label: "Calendly", sub: "Scheduling", col: 2, row: 1, color: "#00E5A0" },
+  { label: "Google Sheets", sub: "CRM & data", col: 3, row: 0, color: "#F5A623" },
+  { label: "Gmail SMTP", sub: "Notifications", col: 3, row: 1, color: "#0EA5E9" },
 ];
 
 const mockConversation = [
@@ -565,8 +565,8 @@ export default function DemoProjectsPage() {
             </div>
 
             <p className="mt-6 text-xs text-[#64748B] font-light">
-              Each layer is interchangeable. Zapier instead of n8n, HubSpot instead of Airtable,
-              Calendly instead of Cal.com — the workflow logic is the same regardless of vendor.
+              Each layer is interchangeable. Zapier instead of n8n, HubSpot instead of Google Sheets,
+              Resend instead of Gmail SMTP — the workflow logic is the same regardless of vendor.
             </p>
           </div>
         </section>
@@ -601,10 +601,10 @@ export default function DemoProjectsPage() {
                 {/* Row 1 */}
                 <div className="grid grid-cols-4 gap-3 mb-3">
                   {[
-                    { label: "Website / Ad funnel", sub: "Lead entry", color: "#F5A623" },
-                    { label: "Typebot chatbot", sub: "Conversation UI", color: "#0EA5E9" },
+                    { label: "Lead form (Next.js)", sub: "Lead entry", color: "#F5A623" },
+                    { label: "API /api/leads", sub: "Server logic", color: "#0EA5E9" },
                     { label: "n8n workflow", sub: "Orchestration", color: "#6366F1" },
-                    { label: "Airtable / Supabase", sub: "CRM & logging", color: "#F5A623" },
+                    { label: "Google Sheets", sub: "CRM & logging", color: "#F5A623" },
                   ].map((node, i) => (
                     <div key={node.label} className="relative">
                       <div
@@ -646,9 +646,9 @@ export default function DemoProjectsPage() {
                 <div className="grid grid-cols-4 gap-3">
                   <div /> {/* col 0 empty */}
                   {[
-                    { label: "GPT-4o", sub: "Qualification AI", color: "#6366F1" },
-                    { label: "Cal.com", sub: "Booking & calendar", color: "#00E5A0" },
-                    { label: "Twilio / WhatsApp", sub: "Reminders & alerts", color: "#0EA5E9" },
+                    { label: "Gemini 2.5 Flash", sub: "Qualification AI", color: "#6366F1" },
+                    { label: "Calendly", sub: "Booking & calendar", color: "#00E5A0" },
+                    { label: "Gmail SMTP", sub: "Notifications", color: "#0EA5E9" },
                   ].map((node) => (
                     <div
                       key={node.label}
@@ -683,16 +683,16 @@ export default function DemoProjectsPage() {
               Build in progress
             </h2>
             <p className="text-sm text-[#7B8FAB] mb-8 font-light">
-              Screenshots from the n8n workflow, Typebot conversation editor, and Airtable CRM
+              Screenshots from the n8n workflow, lead qualification form, and Google Sheets CRM
               view will be added once the reference build recording is complete.
             </p>
 
             <div className="grid sm:grid-cols-2 gap-4">
               {[
                 { label: "n8n workflow canvas", icon: <Webhook size={20} /> },
-                { label: "Typebot conversation editor", icon: <MessageSquare size={20} /> },
-                { label: "Airtable CRM view", icon: <Database size={20} /> },
-                { label: "Cal.com booking flow", icon: <Calendar size={20} /> },
+                { label: "Lead qualification form", icon: <MessageSquare size={20} /> },
+                { label: "Google Sheets CRM view", icon: <Database size={20} /> },
+                { label: "Calendly booking flow", icon: <Calendar size={20} /> },
               ].map((item) => (
                 <div
                   key={item.label}
