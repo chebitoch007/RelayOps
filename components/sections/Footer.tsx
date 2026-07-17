@@ -50,13 +50,12 @@ export default function Footer() {
                 }}
               >
                 <span
-                  className="text-xs font-bold text-[#03080F]"
-                  style={{ fontFamily: "Syne" }}
+                  className="text-xs font-bold text-[#03080F] font-space"
                 >
                   R
                 </span>
               </div>
-              <span className="font-bold tracking-tight text-white text-lg" style={{ fontFamily: "Syne" }}>
+              <span className="font-bold tracking-tight text-white text-lg font-space">
                 RELAY<span className="gradient-text text-[#F5A623]">OPS</span>
               </span>
             </Link>

@@ -192,7 +192,7 @@ export default function Hero() {
                       className="bg-white/4 rounded-xl p-3 border border-white/5"
                     >
                       <div className="text-xs text-[#7B8FAB] mb-1">{stat.label}</div>
-                      <div className="text-xl font-bold" style={{ fontFamily: "Syne" }}>
+                      <div className="text-xl font-bold font-space">
                         {stat.value}
                       </div>
                       <div className="text-xs mt-1" style={{ color: "#0EA5E9" }}>
@@ -302,8 +302,8 @@ export default function Hero() {
                     <div>
                       <div className="text-xs text-[#7B8FAB]">{card.label}</div>
                       <div
-                        className="text-sm font-semibold"
-                        style={{ fontFamily: "Syne", color: card.color }}
+                        className="text-sm font-semibold font-space"
+                        style={{ color: card.color }}
                       >
                         {card.value}
                       </div>

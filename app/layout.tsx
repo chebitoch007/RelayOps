@@ -1,6 +1,23 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
+import { Syne, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+
+// Syne: display/heading font — powers font-space (brand voice, headings, CTAs)
+const syne = Syne({
+  subsets: ["latin"],
+  variable: "--font-space",
+  display: "swap",
+  weight: ["400", "500", "600", "700", "800"],
+});
+
+// JetBrains Mono: terminal/code aesthetic — powers font-mono (.mono class, labels, badges)
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  display: "swap",
+  weight: ["300", "400", "500", "600", "700"],
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.relayops.site"),
@@ -69,7 +86,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth" data-scroll-behavior="smooth">
+    <html lang="en" className={`scroll-smooth ${syne.variable} ${jetbrainsMono.variable}`} data-scroll-behavior="smooth">
       <head>
         {/* Google Analytics */}
         <Script

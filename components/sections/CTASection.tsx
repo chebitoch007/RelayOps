@@ -2,7 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
-import { ArrowRight, CheckCircle, Loader2, AlertCircle } from "lucide-react";
+import { ArrowRight, CheckCircle, Loader2, AlertCircle, Calendar, Mail } from "lucide-react";
 
 type FormState = "idle" | "loading" | "success" | "error";
 
@@ -153,6 +153,22 @@ export default function CTASection() {
               exactly what we&apos;d automate, no obligation.
             </p>
 
+            {/* ── Primary CTA: book a call ── */}
+            {/* Replace the href with your Calendly link, e.g. https://calendly.com/brian-relayops/discovery */}
+            <a
+              href="https://calendly.com/brian-relayops/discovery"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl text-sm font-bold mb-10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F5A623]"
+              style={{ background: "#F5A623", color: "#04060A" }}
+              onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.background = "#E59512")}
+              onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.background = "#F5A623")}
+            >
+              <Calendar size={15} aria-hidden="true" />
+              Book a discovery call
+              <ArrowRight size={13} aria-hidden="true" />
+            </a>
+
             <div className="space-y-4" role="list">
               {[
                 {
@@ -221,8 +237,11 @@ export default function CTASection() {
                 className="glass rounded-xl border border-white/[0.04] p-8 flex flex-col gap-5"
               >
                 <div className="text-sm font-semibold tracking-wide text-white mb-1 font-space">
-                  Get your free automation plan
+                  Or send a message
                 </div>
+                <p className="text-xs text-[#64748B] font-light mb-1">
+                  Prefer to write it out? We&apos;ll reply within 24 hours.
+                </p>
 
                 <div className="grid sm:grid-cols-2 gap-4">
                   {/* Name */}
@@ -354,11 +373,22 @@ export default function CTASection() {
                     </>
                   ) : (
                     <>
-                      <span>Get My Free Plan</span>
+                      <span>Send Message</span>
                       <ArrowRight size={13} />
                     </>
                   )}
                 </motion.button>
+
+                {/* Tertiary: direct email */}
+                <div className="flex items-center justify-center gap-2 pt-1">
+                  <Mail size={12} className="text-[#64748B]" aria-hidden="true" />
+                  <a
+                    href="mailto:brian@relayops.site"
+                    className="text-xs text-[#64748B] hover:text-[#94A3B8] transition-colors"
+                  >
+                    Or email brian@relayops.site directly
+                  </a>
+                </div>
               </form>
             )}
           </motion.div>

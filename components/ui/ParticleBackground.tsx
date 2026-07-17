@@ -6,6 +6,11 @@ export default function ParticleBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
+    // Respect the user's OS-level motion preference.
+    // Users with vestibular disorders rely on this setting — never animate past it.
+    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (motionQuery.matches) return;
+
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d", { alpha: false });
@@ -126,16 +131,30 @@ export default function ParticleBackground() {
     document.addEventListener("mouseleave", handleMouseLeave);
     document.addEventListener("visibilitychange", handleVisibilityChange);
 
+    // If the user enables reduced-motion mid-session (e.g. via OS accessibility settings),
+    // stop the loop immediately without requiring a page reload.
+    const handleMotionChange = (e: MediaQueryListEvent) => {
+      if (e.matches) {
+        cancelAnimationFrame(animationFrameId);
+        ctx.clearRect(0, 0, width, height);
+      } else {
+        render();
+      }
+    };
+    motionQuery.addEventListener("change", handleMotionChange);
+
     resize();
     render();
 
     return () => {
       cancelAnimationFrame(animationFrameId);
+      clearTimeout(resizeTimeout); // prevent debounce timer firing after unmount
       window.removeEventListener("resize", debouncedResize);
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("touchmove", handleTouchMove);
       document.removeEventListener("mouseleave", handleMouseLeave);
       document.removeEventListener("visibilitychange", handleVisibilityChange);
+      motionQuery.removeEventListener("change", handleMotionChange);
     };
   }, []);
 

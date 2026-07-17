@@ -23,8 +23,7 @@ export default function NotFound() {
             style={{ background: "linear-gradient(135deg, #00E5A0, #0A84FF)" }}
           >
             <span
-              className="text-lg font-bold text-[#03080F]"
-              style={{ fontFamily: "Syne, sans-serif" }}
+              className="text-lg font-bold text-[#03080F] font-space"
             >
               R
             </span>
@@ -32,15 +31,13 @@ export default function NotFound() {
         </div>
 
         <div
-          className="text-8xl font-bold mb-4 gradient-text"
-          style={{ fontFamily: "Syne, sans-serif" }}
+          className="text-8xl font-bold mb-4 gradient-text font-space"
         >
           404
         </div>
 
         <h1
-          className="text-2xl font-bold text-white mb-4"
-          style={{ fontFamily: "Syne, sans-serif" }}
+          className="text-2xl font-bold text-white mb-4 font-space"
         >
           Page not found
         </h1>
