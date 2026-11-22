@@ -1,36 +1,17 @@
-import { MetadataRoute } from "next";
+import type { MetadataRoute } from "next";
+import { SERVICES, SITE } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const now = new Date();
+  const page = (path: string, priority: number, changeFrequency: "monthly" | "yearly" = "monthly") => ({
+    url: `${SITE.url}${path}`, lastModified: now, changeFrequency, priority,
+  });
   return [
-    {
-      url: "https://www.relayops.site",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 1,
-    },
-    {
-      url: "https://www.relayops.site/#services",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: "https://www.relayops.site/#process",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: "https://www.relayops.site/#about",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.6,
-    },
-    {
-      url: "https://www.relayops.site/#contact",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
+    page("", 1),
+    page("/solutions", 0.9),
+    ...SERVICES.map((s) => page(`/solutions/${s.slug}`, 0.8)),
+    page("/work", 0.7),
+    page("/demo-projects", 0.7),
+    page("/about", 0.6),
   ];
 }
