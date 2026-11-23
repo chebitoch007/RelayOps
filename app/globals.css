@@ -72,7 +72,7 @@ input, textarea { caret-color: var(--signal); }
 .wrap { width: 100%; max-width: calc(var(--max) + var(--gutter) * 2); margin-inline: auto; padding-inline: var(--gutter); }
 .section { padding-block: clamp(4.5rem, 10vw, 8.5rem); }
 .rule { border: 0; border-top: 1px solid var(--line); margin: 0; }
-.on-night { background: var(--night); color: var(--paper); }
+.on-night { background: var(--night); color: var(--paper); --logo-ops: var(--signal-night); --logo-dot: var(--signal-night); }
 .on-night .rule { border-color: var(--night-line); }
 
 /* ───────── Type ───────── */
