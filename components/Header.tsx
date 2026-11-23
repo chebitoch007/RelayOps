@@ -26,9 +26,18 @@ export default function Header() {
     };
   }, [open]);
 
+  // If the layout switches to desktop while the menu is open, close it (and release the scroll lock)
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 48rem)");
+    const onChange = (e: MediaQueryListEvent) => e.matches && setOpen(false);
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, []);
+
   const isActive = (href: string) => pathname === href || pathname.startsWith(href + "/");
 
   return (
+    <>
     <header className="site-header">
       <div className="wrap">
         <Link href="/" aria-label="RelayOps home" style={{ textDecoration: "none" }}>
@@ -60,13 +69,16 @@ export default function Header() {
         </div>
       </div>
 
-      <div id="mobile-menu" className="menu-panel only-mobile-flex" hidden={!open}>
-        {NAV.map((n) => (
-          <Link key={n.href} href={n.href} className="mlink">{n.label}</Link>
-        ))}
-        <a className="btn" style={{ marginTop: "1.5rem" }} href={SITE.calendly} target="_blank" rel="noopener">Book a free call</a>
-        <Link className="btn btn-ghost" href="/#contact" onClick={() => setOpen(false)}>Send a message</Link>
-      </div>
     </header>
+
+    {/* Outside <header>: its backdrop-filter would otherwise become the containing block for this fixed panel */}
+    <div id="mobile-menu" className="menu-panel only-mobile-flex" hidden={!open}>
+      {NAV.map((n) => (
+        <Link key={n.href} href={n.href} className="mlink" onClick={() => setOpen(false)}>{n.label}</Link>
+      ))}
+      <a className="btn" style={{ marginTop: "1.5rem" }} href={SITE.calendly} target="_blank" rel="noopener">Book a free call</a>
+      <Link className="btn btn-ghost" style={{ marginTop: "0.5rem" }} href="/#contact" onClick={() => setOpen(false)}>Send a message</Link>
+    </div>
+    </>
   );
 }
